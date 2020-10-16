@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m5g-k3-q7k">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Screen View Controller-->
+        <scene sceneID="EpG-7C-vjz">
+            <objects>
+                <viewController storyboardIdentifier="MainScreenViewController" id="ZjG-0c-eYI" customClass="MainScreenViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FCa-cc-JDI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-Z8-89X">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-6e-5ed">
+                                <rect key="frame" x="0.0" y="144" width="414" height="32"/>
+                                <segments>
+                                    <segment title="DS Sinh Viên"/>
+                                    <segment title="DS Lớp"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentSelected:" destination="ZjG-0c-eYI" eventType="valueChanged" id="w2e-Uv-80Q"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZ8-IG-raj">
+                                <rect key="frame" x="0.0" y="175" width="414" height="687"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2sZ-Z8-89X" firstAttribute="leading" secondItem="did-jx-2Nv" secondAttribute="leading" id="91B-K6-Z9L"/>
+                            <constraint firstItem="did-jx-2Nv" firstAttribute="trailing" secondItem="UWI-6e-5ed" secondAttribute="trailing" id="9Um-I4-OM7"/>
+                            <constraint firstItem="WZ8-IG-raj" firstAttribute="leading" secondItem="did-jx-2Nv" secondAttribute="leading" id="RIC-FD-5EL"/>
+                            <constraint firstItem="did-jx-2Nv" firstAttribute="bottom" secondItem="WZ8-IG-raj" secondAttribute="bottom" id="RMv-jX-1H1"/>
+                            <constraint firstItem="WZ8-IG-raj" firstAttribute="top" secondItem="UWI-6e-5ed" secondAttribute="bottom" id="eTo-FK-anO"/>
+                            <constraint firstItem="2sZ-Z8-89X" firstAttribute="top" secondItem="did-jx-2Nv" secondAttribute="top" id="fc9-iW-47w"/>
+                            <constraint firstItem="did-jx-2Nv" firstAttribute="trailing" secondItem="WZ8-IG-raj" secondAttribute="trailing" id="jgb-l8-Jvg"/>
+                            <constraint firstItem="UWI-6e-5ed" firstAttribute="top" secondItem="2sZ-Z8-89X" secondAttribute="bottom" id="np5-MK-RcB"/>
+                            <constraint firstItem="UWI-6e-5ed" firstAttribute="leading" secondItem="did-jx-2Nv" secondAttribute="leading" id="qLi-QL-NXU"/>
+                            <constraint firstItem="2sZ-Z8-89X" firstAttribute="trailing" secondItem="did-jx-2Nv" secondAttribute="trailing" id="sI5-wv-EHH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="did-jx-2Nv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hbb-yY-G45">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.2" catalog="system" id="6Ej-aj-7ml"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="dJF-hD-L98"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentOutlet" destination="UWI-6e-5ed" id="stp-de-2TQ"/>
+                        <outlet property="tableView" destination="WZ8-IG-raj" id="m90-FR-7GJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSQ-X3-TDz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026.0869565217392" y="44.866071428571423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a3l-uv-Muf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m5g-k3-q7k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="54V-vn-H13">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZjG-0c-eYI" kind="relationship" relationship="rootViewController" id="gP9-qv-kre"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRp-7L-grf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115.94202898550725" y="44.866071428571423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="87"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
+</document>

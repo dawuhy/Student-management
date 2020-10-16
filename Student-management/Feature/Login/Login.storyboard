@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yM-gE-aT1">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="UVF-c7-nUG">
+            <objects>
+                <viewController id="6ck-Id-NVT" customClass="LoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0qA-3f-v1N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="aLe-HZ-aAM">
+                                <rect key="frame" x="30" y="273.66666666666669" width="354" height="403.00000000000006"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-JI-h7Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="1Bi-vY-CvT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="aFb-92-L78">
+                                        <rect key="frame" x="0.0" y="180" width="354" height="223"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qqf-wc-JF4">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="4VK-ng-8qw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZz-06-13N">
+                                                <rect key="frame" x="0.0" y="52" width="354" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="j5y-aq-T2v"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-fk-npC">
+                                                <rect key="frame" x="0.0" y="98.999999999999943" width="354" height="40"/>
+                                                <color key="backgroundColor" red="0.067709803580000005" green="0.4406805634" blue="0.7407614589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="P2f-ar-6Rq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <state key="normal" title="Đăng nhập">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="loginTapped:" destination="6ck-Id-NVT" eventType="touchUpInside" id="Zxs-nH-tHC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-ML-ZaH">
+                                                <rect key="frame" x="0.0" y="150.99999999999994" width="354" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="kaw-vj-n7k"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Quên mật khẩu?">
+                                                    <color key="titleColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="forgotPasswordTapped:" destination="6ck-Id-NVT" eventType="touchUpInside" id="HCi-N8-JiD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr4-2e-rQx">
+                                                <rect key="frame" x="0.0" y="192.99999999999994" width="354" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Đăng ký tài khoản mới">
+                                                    <color key="titleColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="registerAccountTapped:" destination="6ck-Id-NVT" eventType="touchUpInside" id="gBC-Jd-tNc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aLe-HZ-aAM" secondAttribute="trailing" constant="30" id="0qP-LJ-Gft"/>
+                            <constraint firstItem="aLe-HZ-aAM" firstAttribute="top" secondItem="tZM-om-1f8" secondAttribute="top" constant="100" id="BmO-fy-ipB"/>
+                            <constraint firstItem="aLe-HZ-aAM" firstAttribute="centerY" secondItem="tZM-om-1f8" secondAttribute="centerY" id="an3-hU-8kO"/>
+                            <constraint firstItem="aLe-HZ-aAM" firstAttribute="top" secondItem="tZM-om-1f8" secondAttribute="top" constant="100" id="gW7-It-CeO"/>
+                            <constraint firstItem="aLe-HZ-aAM" firstAttribute="leading" secondItem="0qA-3f-v1N" secondAttribute="leading" constant="30" id="kpX-y7-gy8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tZM-om-1f8"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gW7-It-CeO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="BmO-fy-ipB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="aFX-1L-oTd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZzF-O3-MHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947.82608695652186" y="47.544642857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6KO-7V-DgH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2yM-gE-aT1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8mg-Wx-Sl5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6ck-Id-NVT" kind="relationship" relationship="rootViewController" id="9yN-eT-3OK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LB8-YJ-q25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="47.544642857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="500" height="313"/>
+    </resources>
+</document>

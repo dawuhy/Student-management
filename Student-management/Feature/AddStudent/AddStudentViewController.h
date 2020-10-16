@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddStudentViewController.h
 //  Student-management
 //
 //  Created by Dang Quoc Huy on 10/14/20.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface AddStudentViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-Z8-89X">
+                            <searchBar contentMode="redraw" text="" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-Z8-89X">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -50,7 +50,11 @@
                         <viewLayoutGuide key="safeArea" id="did-jx-2Nv"/>
                     </view>
                     <navigationItem key="navigationItem" id="hbb-yY-G45">
-                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.2" catalog="system" id="6Ej-aj-7ml"/>
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.2" catalog="system" id="6Ej-aj-7ml">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="ZjG-0c-eYI" id="goh-sA-jhQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="dJF-hD-L98"/>
                     </navigationItem>
                     <connections>
@@ -78,7 +82,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRp-7L-grf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115.94202898550725" y="44.866071428571423"/>
+            <point key="canvasLocation" x="254" y="45"/>
         </scene>
     </scenes>
     <resources>

@@ -7,5 +7,7 @@ target 'Student-management' do
 
   # Pods for Student-management
 pod 'BEMCheckBox'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
 
 end

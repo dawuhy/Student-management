@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		11720826253936A2005526F4 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11720825253936A2005526F4 /* MainScreen.storyboard */; };
 		1172082B25394330005526F4 /* AddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172082925394330005526F4 /* AddClassViewController.m */; };
 		1172082C25394330005526F4 /* AddClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1172082A25394330005526F4 /* AddClassViewController.xib */; };
+		1172082E25394AB2005526F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1172082D25394AB2005526F4 /* GoogleService-Info.plist */; };
 		1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EDC52536A569001B8A79 /* AppDelegate.m */; };
 		1175EDC92536A569001B8A79 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EDC82536A569001B8A79 /* SceneDelegate.m */; };
 		1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EDCB2536A569001B8A79 /* LoginViewController.m */; };
@@ -24,13 +25,17 @@
 		1175EDFE25370D0A001B8A79 /* AddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EDFC25370D0A001B8A79 /* AddStudentViewController.m */; };
 		1175EDFF25370D0A001B8A79 /* AddStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */; };
 		1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EE0225371599001B8A79 /* MainScreenViewController.m */; };
+		1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1179DE84253976F800E3A5D4 /* FirebaseService.m */; };
+		F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.release.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.release.xcconfig"; sourceTree = "<group>"; };
 		11720825253936A2005526F4 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		1172082825394330005526F4 /* AddClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddClassViewController.h; sourceTree = "<group>"; };
 		1172082925394330005526F4 /* AddClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddClassViewController.m; sourceTree = "<group>"; };
 		1172082A25394330005526F4 /* AddClassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddClassViewController.xib; sourceTree = "<group>"; };
+		1172082D25394AB2005526F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1175EDC12536A569001B8A79 /* Student-management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student-management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1175EDC42536A569001B8A79 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1175EDC52536A569001B8A79 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +59,10 @@
 		1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddStudentViewController.xib; sourceTree = "<group>"; };
 		1175EE0125371599001B8A79 /* MainScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainScreenViewController.h; sourceTree = "<group>"; };
 		1175EE0225371599001B8A79 /* MainScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewController.m; sourceTree = "<group>"; };
+		1179DE84253976F800E3A5D4 /* FirebaseService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseService.m; sourceTree = "<group>"; };
+		1179DE862539773100E3A5D4 /* FirebaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseService.h; sourceTree = "<group>"; };
+		581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
+		D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +70,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00A8D20B65739CAE52A429E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */,
+				0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		1172082425392E1D005526F4 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +114,8 @@
 			children = (
 				1175EDC32536A569001B8A79 /* Student-management */,
 				1175EDC22536A569001B8A79 /* Products */,
+				00A8D20B65739CAE52A429E6 /* Pods */,
+				B7211AB1C6713E7B9D768711 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +130,7 @@
 		1175EDC32536A569001B8A79 /* Student-management */ = {
 			isa = PBXGroup;
 			children = (
+				1179DE822539769C00E3A5D4 /* Service */,
 				1172082425392E1D005526F4 /* Feature */,
 				1175EDE52536E3BB001B8A79 /* Storyboard */,
 				1175EDE82536F29F001B8A79 /* SupportFile */,
@@ -127,12 +149,13 @@
 		1175EDE82536F29F001B8A79 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
+				1172082D25394AB2005526F4 /* GoogleService-Info.plist */,
+				1175EDD52536A56B001B8A79 /* Info.plist */,
 				1175EDC42536A569001B8A79 /* AppDelegate.h */,
 				1175EDC52536A569001B8A79 /* AppDelegate.m */,
 				1175EDC72536A569001B8A79 /* SceneDelegate.h */,
 				1175EDC82536A569001B8A79 /* SceneDelegate.m */,
 				1175EDD02536A56B001B8A79 /* Assets.xcassets */,
-				1175EDD52536A56B001B8A79 /* Info.plist */,
 				1175EDD62536A56B001B8A79 /* main.m */,
 			);
 			path = SupportFile;
@@ -151,9 +174,9 @@
 		1175EDF22536FAF9001B8A79 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				1175EDF52536FB0A001B8A79 /* SignUpViewController.xib */,
 				1175EDF32536FB0A001B8A79 /* SignUpViewController.h */,
 				1175EDF42536FB0A001B8A79 /* SignUpViewController.m */,
-				1175EDF52536FB0A001B8A79 /* SignUpViewController.xib */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -188,6 +211,31 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
+		1179DE822539769C00E3A5D4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1179DE83253976AB00E3A5D4 /* Firebase */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1179DE83253976AB00E3A5D4 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				1179DE862539773100E3A5D4 /* FirebaseService.h */,
+				1179DE84253976F800E3A5D4 /* FirebaseService.m */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		B7211AB1C6713E7B9D768711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,9 +243,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1175EDDA2536A56B001B8A79 /* Build configuration list for PBXNativeTarget "Student-management" */;
 			buildPhases = (
+				5E6984850A835AC3F3C7C742 /* [CP] Check Pods Manifest.lock */,
 				1175EDBD2536A569001B8A79 /* Sources */,
 				1175EDBE2536A569001B8A79 /* Frameworks */,
 				1175EDBF2536A569001B8A79 /* Resources */,
+				9842127C4319E5296BF5EDEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +297,7 @@
 			files = (
 				1175EDFF25370D0A001B8A79 /* AddStudentViewController.xib in Resources */,
 				1172082C25394330005526F4 /* AddClassViewController.xib in Resources */,
+				1172082E25394AB2005526F4 /* GoogleService-Info.plist in Resources */,
 				1175EDE42536ACF1001B8A79 /* Login.storyboard in Resources */,
 				1175EDF72536FB0A001B8A79 /* SignUpViewController.xib in Resources */,
 				1175EDD42536A56B001B8A79 /* LaunchScreen.storyboard in Resources */,
@@ -258,6 +309,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E6984850A835AC3F3C7C742 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Student-management-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9842127C4319E5296BF5EDEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1175EDBD2536A569001B8A79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -265,6 +358,7 @@
 			files = (
 				1175EDEF2536F808001B8A79 /* ForgotPasswordViewController.m in Sources */,
 				1172082B25394330005526F4 /* AddClassViewController.m in Sources */,
+				1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
@@ -401,6 +495,7 @@
 		};
 		1175EDDB2536A56B001B8A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +513,7 @@
 		};
 		1175EDDC2536A56B001B8A79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

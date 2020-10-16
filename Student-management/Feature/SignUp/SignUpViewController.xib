@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G6v-cJ-gdR">
-                    <rect key="frame" x="30" y="242" width="354" height="272"/>
+                    <rect key="frame" x="30" y="247" width="354" height="272"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-10-l3m">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
@@ -91,7 +92,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcC-Kg-mvT">
-                    <rect key="frame" x="50" y="551" width="314" height="50"/>
+                    <rect key="frame" x="50" y="556" width="314" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3Sp-5C-XqY"/>
@@ -112,7 +113,7 @@
                 <constraint firstItem="tcC-Kg-mvT" firstAttribute="leading" secondItem="Hap-WG-vmK" secondAttribute="leading" constant="50" id="ntM-pH-pfy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Hap-WG-vmK"/>
-            <point key="canvasLocation" x="830" y="40"/>
+            <point key="canvasLocation" x="236" y="54"/>
         </view>
     </objects>
 </document>

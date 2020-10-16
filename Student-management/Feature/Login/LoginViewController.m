@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import <FirebaseDatabase.h>
 
 @interface LoginViewController ()
 
@@ -14,11 +15,12 @@
 
 @implementation LoginViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    
+    FirebaseService *firebase = [[FirebaseService alloc] init];
+    
+    [firebase writeData:@"Huyne"];
 }
 - (IBAction)loginTapped:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];

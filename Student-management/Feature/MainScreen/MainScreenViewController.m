@@ -22,8 +22,6 @@ NSArray *data;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
-    
     [self setUpView];
 }
 
@@ -47,13 +45,16 @@ NSArray *data;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    
-    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [data count];
 }
+
+- (IBAction)backButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 
 @end

@@ -9,6 +9,7 @@
 #import "MainScreenViewController.h"
 
 @interface MainScreenViewController ()
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentOutlet;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -29,6 +30,7 @@ NSArray *data;
     self.navigationItem.title = @"Danh sách";
 }
 
+//MARK:- IBAction
 - (IBAction)segmentSelected:(id)sender {
     switch (_segmentOutlet.selectedSegmentIndex) {
         case 0:
@@ -40,6 +42,10 @@ NSArray *data;
         default:
             break;
     }
+}
+- (IBAction)addStudentTapped:(id)sender {
+    AddStudentViewController *addStudentViewController = [[AddStudentViewController alloc] initWithNibName:@"AddStudentViewController" bundle:nil];
+    [self.navigationController pushViewController:addStudentViewController animated:true];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

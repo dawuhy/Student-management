@@ -6,8 +6,9 @@ target 'Student-management' do
   use_frameworks!
 
   # Pods for Student-management
-pod 'BEMCheckBox'
 pod 'Firebase/Analytics'
 pod 'Firebase/Database'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
 
 end

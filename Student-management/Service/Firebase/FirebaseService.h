@@ -11,11 +11,14 @@
 
 #import <Foundation/Foundation.h>
 #import <FirebaseDatabase.h>
-
+#import "User.h"
 
 @interface FirebaseService : NSObject
 
--(void)writeData: (NSString*)name;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+
+-(void)addUserWithUserName: (NSString*)userName password:(NSString*)password email:(NSString*)email dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone;
+-(void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone;
 
 @end
 

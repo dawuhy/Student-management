@@ -9,6 +9,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController">
             <connections>
+                <outlet property="confirmInfomationButtonOutlet" destination="Rdk-Zh-djn" id="OGD-oe-Wsi"/>
+                <outlet property="confirmPasswordTextField" destination="CqM-ku-wfJ" id="ZzF-Y4-qRg"/>
+                <outlet property="dateOfBirthTextField" destination="7WO-fH-EAj" id="wrM-jK-SUV"/>
+                <outlet property="emailTextField" destination="Q0X-EW-t0h" id="w9h-kr-G7S"/>
+                <outlet property="numberPhoneTextField" destination="1CC-nh-qXC" id="P6N-Mr-qZC"/>
+                <outlet property="passwordTextField" destination="Zg6-gg-pkq" id="gRN-01-Tt3"/>
+                <outlet property="userNameTextField" destination="XR0-10-l3m" id="PPb-QD-UGF"/>
                 <outlet property="view" destination="HIQ-wS-76T" id="d92-86-bQv"/>
             </connections>
         </placeholder>
@@ -18,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="G6v-cJ-gdR">
-                    <rect key="frame" x="30" y="247" width="354" height="272"/>
+                    <rect key="frame" x="30" y="244.5" width="354" height="277"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tên tài khoản" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XR0-10-l3m">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
@@ -69,30 +76,34 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G2g-Pg-F5p">
-                            <rect key="frame" x="0.0" y="252" width="354" height="20"/>
+                            <rect key="frame" x="0.0" y="252" width="354" height="25"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sak-JV-zCM">
-                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-Zh-djn">
+                                    <rect key="frame" x="0.0" y="2" width="25" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="xg6-qm-ufu"/>
+                                        <constraint firstAttribute="width" constant="25" id="eZN-Vi-n70"/>
                                     </constraints>
-                                </view>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" backgroundImage="stop" catalog="system"/>
+                                    <connections>
+                                        <action selector="confirmInfomationTapped:" destination="-1" eventType="touchUpInside" id="NU0-Do-m5S"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tôi xác nhận những thông tin đăng ký bên trên" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSz-X9-R68">
-                                    <rect key="frame" x="30" y="0.0" width="324" height="20"/>
+                                    <rect key="frame" x="35" y="0.0" width="319" height="25"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="gGL-XE-Zwi"/>
+                                <constraint firstAttribute="height" constant="25" id="gGL-XE-Zwi"/>
                             </constraints>
                         </stackView>
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcC-Kg-mvT">
-                    <rect key="frame" x="50" y="556" width="314" height="50"/>
+                    <rect key="frame" x="50" y="558.5" width="314" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3Sp-5C-XqY"/>
@@ -101,6 +112,9 @@
                     <state key="normal" title="Đăng ký">
                         <color key="titleColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="submitButtonTapped:" destination="-1" eventType="touchUpInside" id="3kA-rE-4F8"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,4 +130,7 @@
             <point key="canvasLocation" x="236" y="54"/>
         </view>
     </objects>
+    <resources>
+        <image name="stop" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

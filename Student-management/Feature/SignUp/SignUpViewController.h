@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirebaseService.h"
+#import <FirebaseAuth.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

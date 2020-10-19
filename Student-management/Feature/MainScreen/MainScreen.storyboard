@@ -55,7 +55,11 @@
                                 <action selector="backButtonTapped:" destination="ZjG-0c-eYI" id="goh-sA-jhQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="dJF-hD-L98"/>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="dJF-hD-L98">
+                            <connections>
+                                <action selector="addStudentTapped:" destination="ZjG-0c-eYI" id="Yv3-pL-d9I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="segmentOutlet" destination="UWI-6e-5ed" id="stp-de-2TQ"/>

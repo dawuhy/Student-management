@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1171BEAC253D8FF00023C43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171BEAB253D8FF00023C43C /* User.m */; };
 		11720826253936A2005526F4 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11720825253936A2005526F4 /* MainScreen.storyboard */; };
 		1172082B25394330005526F4 /* AddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172082925394330005526F4 /* AddClassViewController.m */; };
 		1172082C25394330005526F4 /* AddClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1172082A25394330005526F4 /* AddClassViewController.xib */; };
@@ -31,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.release.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.release.xcconfig"; sourceTree = "<group>"; };
+		1171BEAB253D8FF00023C43C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1171BEAD253D90DD0023C43C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		11720825253936A2005526F4 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		1172082825394330005526F4 /* AddClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddClassViewController.h; sourceTree = "<group>"; };
 		1172082925394330005526F4 /* AddClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddClassViewController.m; sourceTree = "<group>"; };
@@ -86,6 +89,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1171BEAA253D8FD30023C43C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1171BEAD253D90DD0023C43C /* User.h */,
+				1171BEAB253D8FF00023C43C /* User.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1172082425392E1D005526F4 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		1175EDC32536A569001B8A79 /* Student-management */ = {
 			isa = PBXGroup;
 			children = (
+				1171BEAA253D8FD30023C43C /* Model */,
 				1179DE822539769C00E3A5D4 /* Service */,
 				1172082425392E1D005526F4 /* Feature */,
 				1175EDE52536E3BB001B8A79 /* Storyboard */,
@@ -362,6 +375,7 @@
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
+				1171BEAC253D8FF00023C43C /* User.m in Sources */,
 				1175EDF62536FB0A001B8A79 /* SignUpViewController.m in Sources */,
 				1175EDD72536A56B001B8A79 /* main.m in Sources */,
 				1175EDFE25370D0A001B8A79 /* AddStudentViewController.m in Sources */,

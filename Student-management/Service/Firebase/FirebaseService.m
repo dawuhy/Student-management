@@ -9,39 +9,43 @@
 #import "FirebaseService.h"
 
 @interface FirebaseService ()
-
-@property (strong, nonatomic) FIRDatabaseReference *ref;
-
 @end
 
 @implementation FirebaseService
 
 -(id)init {
-    self.ref = [[FIRDatabase database] reference];
+    _ref = [[FIRDatabase database] reference];
     return self;
 }
 
--(void)writeData: (NSString*)name {
-//    [[_ref child:@"student/name"] setValue:name];
-    [[_ref child:@"student/name"] setValue:name withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+-(void)addUserWithUserName: (NSString*)userName password:(NSString*)password email:(NSString*)email dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone {
+    
+    NSDictionary<NSString*, id> *dic = @{ @"userName": userName,
+                                          @"password": password,
+                                          @"email": email,
+                                          @"dateOfBirth": dateOfBirth,
+                                          @"numberPhone": numberPhone };
+    
+    [[[_ref child:@"user"] childByAutoId] setValue:dic withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         if (error) {
-            NSLog(@"Data could not be saved: %@", error);
+            printf("Error");
         } else {
-            NSLog(@"Data saved successfully");
+            printf("Success");
         }
     }];
 }
 
-//    FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+-(void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone {
     
-//    _ref = [[FIRDatabase database] reference];
+    NSDictionary<NSString*, id> *dic = @{ @"name" : name, @"email" : email, @"class": class, @"dateOfBirth": dateOfBirth, @"numberPhone": numberPhone };
     
-//    [[_ref child:@"someID/name"] setValue:@"Changed"];
-    
-//    [[_ref child:@"someID"] observeSingleEventOfType: FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//        NSDictionary *name = snapshot.value;
-//
-//        NSLog(@"%@", name);
-//    }];
+    [[[_ref child:@"student"] childByAutoId] setValue:dic withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error) {
+            printf("Error");
+        } else {
+            printf("Success");
+        }
+    }];
+}
 
 @end

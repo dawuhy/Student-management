@@ -9,6 +9,13 @@
 #import "SignUpViewController.h"
 
 @interface SignUpViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
+@property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *confirmInfomationButtonOutlet;
 
 @end
 
@@ -21,8 +28,112 @@
     [self setUpView];
 }
 
+//MARK:- Void function
+
 -(void)setUpView {
     self.navigationItem.title = @"Đăng ký";
+    
+    [self.confirmInfomationButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
+}
+
+-(void)signUpAccount {
+    FirebaseService *firebase = [[FirebaseService alloc] init];
+    [firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
+    
+//    [[FIRAuth auth] createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+//        if (error != nil) {
+//            [self showAlertWithMessage:@"Sign up failure."];
+//        } else {
+//
+//        }
+//    }];
+}
+
+//MARK:- IBAction
+- (IBAction)confirmInfomationTapped:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
+- (IBAction)submitButtonTapped:(id)sender {
+    
+    if ([self validateForm]) {
+        [self signUpAccount];
+        [self showAlertAndPopVC];
+    }
+}
+
+// MARK:- Validate form
+- (BOOL)validateEmailWithString:(NSString*)email {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
+
+-(BOOL)validateDateOfBirthWithString:(NSString*)dateString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd/MM/yyyy";
+    //dateFormatter.dateFormat = @"dd-MM-yyyy";
+    
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    if(date == nil) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+-(BOOL)validatePassword {
+    return [self isValidPassword:self.passwordTextField.text];
+}
+
+-(BOOL)isValidPassword: (NSString*)password {
+    NSPredicate *passwordTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}"];
+    return [passwordTest evaluateWithObject:password];
+}
+
+-(BOOL)validateConfirmPassword {
+    return (self.passwordTextField.text == self.confirmPasswordTextField.text);
+}
+
+-(BOOL)validateForm {
+    if ([[self.userNameTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqual: @""]) {
+        [self showAlertWithMessage:@"Do not leave your username blank."];
+        return false;
+    } else if (![self validateEmailWithString:self.emailTextField.text]) {
+        [self showAlertWithMessage:@"Email is invalid."];
+        return false;
+    } else if (![self validateDateOfBirthWithString:self.dateOfBirthTextField.text]) {
+        [self showAlertWithMessage:@"Date of birth is invalid."];
+        return false;
+    }else if (![self validatePassword]) {
+        [self showAlertWithMessage:@"1. Password length is 8.\n2. One Alphabet in Password.\n3. One Special Character in Password. "];
+    } else if([self validateConfirmPassword]) {
+        [self showAlertWithMessage:@"Re-enter password does not match."];
+        return false;
+    } else if(!self.confirmInfomationButtonOutlet.selected) {
+        [self showAlertWithMessage:@"Unconfirmed information."];
+        return false;
+    }
+    return true;
+}
+
+// MARK:- Show alert
+-(void) showAlertAndPopVC {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign up" message:@"Sign up successfully." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:true];
+    }];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+-(void) showAlertWithMessage: (NSString*)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Notification" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 @end

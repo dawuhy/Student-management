@@ -18,9 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    FirebaseService *firebase = [[FirebaseService alloc] init];
+//    FirebaseService *firebase = [[FirebaseService alloc] init];
     
-    [firebase writeData:@"Huyne"];
 }
 - (IBAction)loginTapped:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];

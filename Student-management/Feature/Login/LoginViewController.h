@@ -14,6 +14,7 @@
 
 @interface LoginViewController : UIViewController
     
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 
 @end
 

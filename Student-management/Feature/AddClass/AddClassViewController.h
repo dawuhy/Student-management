@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirebaseService.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddClassViewController : UIViewController
+
+@property (strong, nonatomic) FirebaseService *firebase;
 
 @end
 

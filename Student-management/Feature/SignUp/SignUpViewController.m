@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     [self setUpView];
 }
@@ -32,21 +31,21 @@
 
 -(void)setUpView {
     self.navigationItem.title = @"Đăng ký";
-    
+    self.firebase = [[FirebaseService alloc] init];
     [self.confirmInfomationButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
 }
 
 -(void)signUpAccount {
-    FirebaseService *firebase = [[FirebaseService alloc] init];
-    [firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
+    [self.firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
     
-//    [[FIRAuth auth] createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-//        if (error != nil) {
-//            [self showAlertWithMessage:@"Sign up failure."];
-//        } else {
-//
-//        }
-//    }];
+    // Authenticate way
+    //    [[FIRAuth auth] createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+    //        if (error != nil) {
+    //            [self showAlertWithMessage:@"Sign up failure."];
+    //        } else {
+    //
+    //        }
+    //    }];
 }
 
 //MARK:- IBAction
@@ -55,7 +54,6 @@
 }
 
 - (IBAction)submitButtonTapped:(id)sender {
-    
     if ([self validateForm]) {
         [self signUpAccount];
         [self showAlertAndPopVC];
@@ -91,13 +89,19 @@
     return [passwordTest evaluateWithObject:password];
 }
 
+-(bool) isValidUserName: (NSString*)userName {
+    NSPredicate *userNameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?=.*[a-z])[A-Za-z\\d$@$#!%*?&]{6,}"];
+    return [userNameTest evaluateWithObject:userName];
+}
+
 -(BOOL)validateConfirmPassword {
     return (self.passwordTextField.text == self.confirmPasswordTextField.text);
 }
 
 -(BOOL)validateForm {
-    if ([[self.userNameTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqual: @""]) {
-        [self showAlertWithMessage:@"Do not leave your username blank."];
+    if (![self isValidUserName:self.userNameTextField.text]) {
+        //        [self showAlertWithMessage:@"Do not leave your username blank."];
+        [self showAlertWithMessage:@"1. Username length is 6.\n2. One Alphabet in username.\n"];
         return false;
     } else if (![self validateEmailWithString:self.emailTextField.text]) {
         [self showAlertWithMessage:@"Email is invalid."];

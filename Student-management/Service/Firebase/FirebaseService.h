@@ -17,8 +17,14 @@
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 
+// Add user to firebase
 -(void)addUserWithUserName: (NSString*)userName password:(NSString*)password email:(NSString*)email dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone;
--(void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone;
+// Add student to firebase
+-(void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth gender:(NSNumber*)gender numberPhone:(NSString*)numberPhone avatarURL:(NSString*)avatarURL;
+// Add class to firebase
+-(void) addClassWithName: (NSString*)name;
+// Authenticate login
+-(BOOL) authenticateWithUserName: (NSString*)userName andPassword:(NSString*)password;
 
 @end
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11449E91253FD88800A4D9F2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 11449E90253FD88800A4D9F2 /* Student.m */; };
+		116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116E28E4253FD54A00E2ECF5 /* StudentCell.m */; };
+		116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116E28E5253FD54A00E2ECF5 /* StudentCell.xib */; };
 		1171BEAC253D8FF00023C43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171BEAB253D8FF00023C43C /* User.m */; };
 		11720826253936A2005526F4 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11720825253936A2005526F4 /* MainScreen.storyboard */; };
 		1172082B25394330005526F4 /* AddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172082925394330005526F4 /* AddClassViewController.m */; };
@@ -32,6 +35,11 @@
 
 /* Begin PBXFileReference section */
 		0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.release.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.release.xcconfig"; sourceTree = "<group>"; };
+		11449E8F253FD87C00A4D9F2 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		11449E90253FD88800A4D9F2 /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		116E28E3253FD54A00E2ECF5 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
+		116E28E4253FD54A00E2ECF5 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
+		116E28E5253FD54A00E2ECF5 /* StudentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
 		1171BEAB253D8FF00023C43C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		1171BEAD253D90DD0023C43C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		11720825253936A2005526F4 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
@@ -89,11 +97,39 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		1171BEAA253D8FD30023C43C /* Model */ = {
+		11449E8D253FD86400A4D9F2 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				11449E8F253FD87C00A4D9F2 /* Student.h */,
+				11449E90253FD88800A4D9F2 /* Student.m */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		11449E8E253FD86A00A4D9F2 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				1171BEAD253D90DD0023C43C /* User.h */,
 				1171BEAB253D8FF00023C43C /* User.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		116E28E8253FD55100E2ECF5 /* StudentCell */ = {
+			isa = PBXGroup;
+			children = (
+				116E28E3253FD54A00E2ECF5 /* StudentCell.h */,
+				116E28E4253FD54A00E2ECF5 /* StudentCell.m */,
+				116E28E5253FD54A00E2ECF5 /* StudentCell.xib */,
+			);
+			path = StudentCell;
+			sourceTree = "<group>";
+		};
+		1171BEAA253D8FD30023C43C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11449E8E253FD86A00A4D9F2 /* User */,
+				11449E8D253FD86400A4D9F2 /* Student */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,9 +243,9 @@
 		1175EDFA25370CF8001B8A79 /* AddStudent */ = {
 			isa = PBXGroup;
 			children = (
+				1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */,
 				1175EDFB25370D0A001B8A79 /* AddStudentViewController.h */,
 				1175EDFC25370D0A001B8A79 /* AddStudentViewController.m */,
-				1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */,
 			);
 			path = AddStudent;
 			sourceTree = "<group>";
@@ -220,6 +256,7 @@
 				11720825253936A2005526F4 /* MainScreen.storyboard */,
 				1175EE0125371599001B8A79 /* MainScreenViewController.h */,
 				1175EE0225371599001B8A79 /* MainScreenViewController.m */,
+				116E28E8253FD55100E2ECF5 /* StudentCell */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -317,6 +354,7 @@
 				1175EDD12536A56B001B8A79 /* Assets.xcassets in Resources */,
 				1175EDF02536F808001B8A79 /* ForgotPasswordViewController.xib in Resources */,
 				11720826253936A2005526F4 /* MainScreen.storyboard in Resources */,
+				116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,11 +409,13 @@
 			files = (
 				1175EDEF2536F808001B8A79 /* ForgotPasswordViewController.m in Sources */,
 				1172082B25394330005526F4 /* AddClassViewController.m in Sources */,
+				11449E91253FD88800A4D9F2 /* Student.m in Sources */,
 				1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
 				1171BEAC253D8FF00023C43C /* User.m in Sources */,
+				116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */,
 				1175EDF62536FB0A001B8A79 /* SignUpViewController.m in Sources */,
 				1175EDD72536A56B001B8A79 /* main.m in Sources */,
 				1175EDFE25370D0A001B8A79 /* AddStudentViewController.m in Sources */,
@@ -447,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -499,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -7,13 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import <Firebase.h>
 #import "FirebaseService.h"
+#import <FirebaseStorage/FirebaseStorage.h>
+#import <WaitSpinner.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddStudentViewController : UIViewController
+@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
+@property (weak, nonatomic) IBOutlet UIButton *maleButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *femaleButtonOutlet;
+@property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *classTextField;
 
+@property (strong, nonatomic) FirebaseService *firebase;
+@property FIRStorageReference *storageRef;
+@property NSURL* avatarURL;
+@property WaitSpinner* spinner;
 
 @end
 

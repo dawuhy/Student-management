@@ -9,14 +9,7 @@
 #import "AddStudentViewController.h"
 
 @interface AddStudentViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
-@property (weak, nonatomic) IBOutlet UIButton *maleButtonOutlet;
-@property (weak, nonatomic) IBOutlet UIButton *femaleButtonOutlet;
-@property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
-@property (weak, nonatomic) IBOutlet UITextField *classTextField;
+
 @end
 
 @implementation AddStudentViewController
@@ -27,17 +20,20 @@
     [self setUpView];
 }
 
-//MARK:- Void function
-
--(void)setUpView {
-    [self.maleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
-    [self.femaleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
+- (void)viewWillAppear:(BOOL)animated {
+    
 }
 
--(void)saveStudentData {
-    FirebaseService *firebase = [[FirebaseService alloc] init];
+//MARK:- Void function
+-(void)setUpView {
+    self.firebase = [[FirebaseService alloc] init];
+    self.storageRef = [[FIRStorage storage] reference];
+    [self.maleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
+    [self.femaleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
     
-    [firebase addStudentWithName:self.nameTextField.text email:self.emailTextField.text class:self.classTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
+    self.spinner = [[WaitSpinner alloc] init];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(submit:)];
 }
 
 -(void)showAlertWithMessage: (NSString*)message {
@@ -58,11 +54,51 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-//MARK:- IBAction
-- (IBAction)addAvatarTapped:(id)sender {
-    
+
+-(void) saveStudentInfo {
+    // Save avatar
+    FIRStorageReference *imgRef = [self.storageRef child:[NSString stringWithFormat:@"images/%@.png", self.emailTextField.text]];
+    NSData* imgData = UIImagePNGRepresentation(self.avatarImageView.image);
+    [imgRef
+     putData:imgData
+     metadata:nil
+     completion:^(FIRStorageMetadata *metadata,
+                  NSError *error) {
+        if (error != nil) {
+            NSLog(@"**************\n%@\n**************", error.localizedDescription);
+        } else {
+            // Metadata contains file metadata such as size, content-type, and download URL.
+            //            int64_t size = metadata.size;
+            // You can also access to download URL after upload.
+            [imgRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+                if (error != nil) {
+                    NSLog(@"**************\n%@\n**************", error.localizedDescription);
+                } else {
+                    self.avatarURL = URL;
+                    NSLog(@"Upload image success.");
+                    [self saveDataToFireBase];
+                    [self showAlertAndPopVC];
+                    [self hideSpinner];
+                }
+            }];
+        }
+    }];
 }
 
+-(void) saveDataToFireBase {
+    [self.firebase addStudentWithName:self.nameTextField.text email:self.emailTextField.text class:self.classTextField.text dateOfBirth:self.dateOfBirthTextField.text gender:[NSNumber numberWithBool:(self.maleButtonOutlet.isSelected)] numberPhone:self.numberPhoneTextField.text avatarURL:self.avatarURL.absoluteString];
+}
+
+-(void) showSpinner {
+    [self.spinner showInView:self.view];
+}
+
+
+-(void) hideSpinner {
+    [self.spinner hide];
+}
+
+//MARK:- IBAction
 - (IBAction)maleButtonTapped:(UIButton*)sender {
     sender.selected = !sender.selected;
     if (_femaleButtonOutlet.selected) {
@@ -79,13 +115,44 @@
 
 - (IBAction)submitTapped:(id)sender {
     if ([self validateForm]) {
-        [self saveStudentData];
-        [self showAlertAndPopVC];
+        [self showSpinner];
+        [self saveStudentInfo];
     }
 }
 
-//MARK:- Validate
+// MARK:- Add avatar
+- (IBAction)addAvatarTapped:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary]){
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }
+}
 
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    img = [self imageWithImage:img convertToSize:CGSizeMake(100, 100)];
+    self.avatarImageView.image = img;
+//    self.imgData = UIImagePNGRepresentation(img);
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+//MARK:- Validate
 -(BOOL) validateDateOfBirthWithString:(NSString*)dateString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"dd/MM/yyyy";
@@ -118,13 +185,11 @@
     } else if (_maleButtonOutlet.selected == false && _femaleButtonOutlet.selected == false) {
         [self showAlertWithMessage:@"Please fill gender."];
         return false;
-    } else if ([[self.classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqual: @""]) {
+    } else if ([[self.classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqualToString:@""]) {
         [self showAlertWithMessage:@"Do not leave your class blank."];
         return false;
     }
     return true;
 }
-
-
 
 @end

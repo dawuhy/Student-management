@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "AddStudentViewController.h"
+#import "AddClassViewController.h"
+#import "StudentCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface MainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentOutlet;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 

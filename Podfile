@@ -8,7 +8,7 @@ target 'Student-management' do
   # Pods for Student-management
 pod 'Firebase/Analytics'
 pod 'Firebase/Database'
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+pod 'WaitSpinner'
 
 end

@@ -59,6 +59,17 @@
     // Save avatar
     FIRStorageReference *imgRef = [self.storageRef child:[NSString stringWithFormat:@"images/%@.png", self.emailTextField.text]];
     NSData* imgData = UIImagePNGRepresentation(self.avatarImageView.image);
+    UIImage *image = self.avatarImageView.image;
+    // Resize image
+    // Check if the image size is too large
+    
+    while ((imgData.length/1024) >= 1024) {
+        NSLog(@"While start - The imagedata size is currently: %f KB", roundf(imgData.length/1024));
+        image = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width * 0.95, image.size.height * 0.95)];
+        imgData = UIImageJPEGRepresentation(image, 1);
+        NSLog(@"to: %f KB", roundf(imgData.length/1024));
+    }
+    
     [imgRef
      putData:imgData
      metadata:nil
@@ -86,7 +97,18 @@
 }
 
 -(void) saveDataToFireBase {
-    [self.firebase addStudentWithName:self.nameTextField.text email:self.emailTextField.text class:self.classTextField.text dateOfBirth:self.dateOfBirthTextField.text gender:[NSNumber numberWithBool:(self.maleButtonOutlet.isSelected)] numberPhone:self.numberPhoneTextField.text avatarURL:self.avatarURL.absoluteString];
+    //    [self.firebase addStudentWithName:_nameTextField.text email:_emailTextField.text class:_classTextField.text dateOfBirth:_dateOfBirthTextField.text gender:[NSNumber numberWithBool:(self.maleButtonOutlet.isSelected)] numberPhone:_numberPhoneTextField.text avatarURL:_avatarURL.absoluteString address:_addressTextField.text];
+    
+    NSDictionary<NSString*, id> *studentDict = @{ @"name": _nameTextField.text,
+                                                  @"email": _emailTextField.text,
+                                                  @"class": _classTextField.text,
+                                                  @"dateOfBirth": _dateOfBirthTextField.text,
+                                                  @"gender": [NSNumber numberWithBool:(self.maleButtonOutlet.isSelected)],
+                                                  @"numberPhone": _numberPhoneTextField.text,
+                                                  @"address": _addressTextField.text,
+                                                  @"avatarURL": _avatarURL.absoluteString
+    };
+    [self.firebase addStudentWithDict:studentDict];
 }
 
 -(void) showSpinner {
@@ -133,9 +155,8 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-    img = [self imageWithImage:img convertToSize:CGSizeMake(100, 100)];
     self.avatarImageView.image = img;
-//    self.imgData = UIImagePNGRepresentation(img);
+    //    self.imgData = UIImagePNGRepresentation(img);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

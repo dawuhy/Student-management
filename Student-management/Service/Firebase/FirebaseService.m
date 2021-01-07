@@ -37,9 +37,21 @@
 //    }];
 }
 
-- (void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth gender:(NSNumber*)gender numberPhone:(NSString*)numberPhone avatarURL:(NSString*)avatarURL {
-    NSDictionary<NSString*, id> *dic = @{ @"name" : name, @"email" : email, @"class": class, @"dateOfBirth": dateOfBirth, @"gender": gender, @"numberPhone": numberPhone, @"avatarURL": avatarURL };
+- (void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth gender:(NSNumber*)gender numberPhone:(NSString*)numberPhone avatarURL:(NSString*)avatarURL address:(NSString*)address {
+    NSDictionary<NSString*, id> *dic = @{ @"name": name,
+                                          @"email": email,
+                                          @"class": class,
+                                          @"dateOfBirth": dateOfBirth,
+                                          @"gender": gender,
+                                          @"numberPhone": numberPhone,
+                                          @"address": address,
+                                          @"avatarURL": avatarURL
+    };
     [[[self.ref child:@"student"] childByAutoId] setValue:dic];
+}
+
+- (void)addStudentWithDict: (NSDictionary*)studentDict {
+    [[[self.ref child: @"student"] childByAutoId] setValue: studentDict];
 }
 
 - (void)addClassWithName: (NSString*)name {

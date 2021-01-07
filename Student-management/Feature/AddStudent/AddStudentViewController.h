@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *femaleButtonOutlet;
 @property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *classTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 
 @property (strong, nonatomic) FirebaseService *firebase;
 @property FIRStorageReference *storageRef;

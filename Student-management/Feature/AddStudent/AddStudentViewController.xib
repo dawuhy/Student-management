@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddStudentViewController">
             <connections>
+                <outlet property="addressTextField" destination="ZNu-Ux-Bm7" id="4kk-cO-MlG"/>
                 <outlet property="avatarImageView" destination="Efl-zD-cxN" id="7oY-p7-kbl"/>
                 <outlet property="classTextField" destination="Duy-xG-zsN" id="2XS-gv-bv1"/>
                 <outlet property="dateOfBirthTextField" destination="jK6-7z-M8R" id="j0n-j9-Awp"/>
@@ -27,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7WC-hE-bmS">
-                    <rect key="frame" x="20" y="74" width="374" height="422"/>
+                    <rect key="frame" x="20" y="74" width="374" height="469"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efl-zD-cxN">
                             <rect key="frame" x="112" y="0.0" width="150" height="150"/>
@@ -125,17 +126,27 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Địa chỉ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNu-Ux-Bm7">
+                            <rect key="frame" x="0.0" y="434" width="374" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="A3R-Cd-ZIC"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <constraints>
                         <constraint firstItem="k6E-P1-wJv" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="4QZ-FB-7Fn"/>
                         <constraint firstItem="jK6-7z-M8R" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="GmY-3W-BRX"/>
                         <constraint firstItem="Duy-xG-zsN" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="VfG-gD-bOf"/>
+                        <constraint firstItem="ZNu-Ux-Bm7" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="a8p-Ij-JSY"/>
                         <constraint firstItem="OZ4-Hc-XoX" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="e8b-p4-2mw"/>
                         <constraint firstItem="RpI-1a-rZp" firstAttribute="leading" secondItem="7WC-hE-bmS" secondAttribute="leading" id="y1X-tD-QcD"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeQ-ag-BG3">
-                    <rect key="frame" x="40" y="526" width="334" height="42"/>
+                    <rect key="frame" x="40" y="573" width="334" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <state key="normal" title="Lưu">

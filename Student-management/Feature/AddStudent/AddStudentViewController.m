@@ -26,6 +26,7 @@
 
 //MARK:- Void function
 -(void)setUpView {
+    self.navigationItem.title = @"Thêm học sinh";
     self.firebase = [[FirebaseService alloc] init];
     self.storageRef = [[FIRStorage storage] reference];
     [self.maleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
@@ -56,6 +57,7 @@
 
 
 -(void) saveStudentInfo {
+    [self showSpinner];
     // Save avatar
     FIRStorageReference *imgRef = [self.storageRef child:[NSString stringWithFormat:@"images/%@.png", self.emailTextField.text]];
     NSData* imgData = UIImagePNGRepresentation(self.avatarImageView.image);
@@ -63,11 +65,13 @@
     // Resize image
     // Check if the image size is too large
     
-    while ((imgData.length/1024) >= 1024) {
-        NSLog(@"While start - The imagedata size is currently: %f KB", roundf(imgData.length/1024));
-        image = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width * 0.95, image.size.height * 0.95)];
-        imgData = UIImageJPEGRepresentation(image, 1);
-        NSLog(@"to: %f KB", roundf(imgData.length/1024));
+    if ((imgData.length/1024) >= 1024) {
+        while ((imgData.length/1024) >= 1024) {
+            NSLog(@"While start - The imagedata size is currently: %f KB", roundf(imgData.length/1024));
+            image = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width * 0.95, image.size.height * 0.95)];
+            imgData = UIImageJPEGRepresentation(image, 1);
+            NSLog(@"to: %f KB", roundf(imgData.length/1024));
+        }
     }
     
     [imgRef
@@ -77,6 +81,7 @@
                   NSError *error) {
         if (error != nil) {
             NSLog(@"**************\n%@\n**************", error.localizedDescription);
+            [self showAlertWithMessage:error.localizedDescription];
         } else {
             // Metadata contains file metadata such as size, content-type, and download URL.
             //            int64_t size = metadata.size;
@@ -137,7 +142,6 @@
 
 - (IBAction)submitTapped:(id)sender {
     if ([self validateForm]) {
-        [self showSpinner];
         [self saveStudentInfo];
     }
 }
@@ -156,7 +160,6 @@
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.avatarImageView.image = img;
-    //    self.imgData = UIImagePNGRepresentation(img);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

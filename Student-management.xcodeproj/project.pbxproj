@@ -30,6 +30,9 @@
 		1175EDFF25370D0A001B8A79 /* AddStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */; };
 		1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1175EE0225371599001B8A79 /* MainScreenViewController.m */; };
 		1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1179DE84253976F800E3A5D4 /* FirebaseService.m */; };
+		11EFC89525A825220005E438 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC89425A825220005E438 /* TabBarViewController.m */; };
+		11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC89B25A82A460005E438 /* UserInfoViewController.m */; };
+		11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC89C25A82A460005E438 /* UserInfoViewController.xib */; };
 		F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,11 @@
 		1175EE0225371599001B8A79 /* MainScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewController.m; sourceTree = "<group>"; };
 		1179DE84253976F800E3A5D4 /* FirebaseService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseService.m; sourceTree = "<group>"; };
 		1179DE862539773100E3A5D4 /* FirebaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseService.h; sourceTree = "<group>"; };
+		11EFC89325A825220005E438 /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		11EFC89425A825220005E438 /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		11EFC89A25A82A460005E438 /* UserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		11EFC89B25A82A460005E438 /* UserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		11EFC89C25A82A460005E438 /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
 		D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,9 +142,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1172082425392E1D005526F4 /* Feature */ = {
+		1172082425392E1D005526F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11EFC89925A82A260005E438 /* UserInfor */,
+				11EFC89725A825280005E438 /* TabBar */,
 				11720827253942F9005526F4 /* AddClass */,
 				1175EDF925370843001B8A79 /* Login */,
 				1175EE0025371577001B8A79 /* MainScreen */,
@@ -144,7 +154,7 @@
 				1175EDF22536FAF9001B8A79 /* SignUp */,
 				1175EDF12536F811001B8A79 /* ForgorPassword */,
 			);
-			path = Feature;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		11720827253942F9005526F4 /* AddClass */ = {
@@ -180,7 +190,7 @@
 			children = (
 				1171BEAA253D8FD30023C43C /* Model */,
 				1179DE822539769C00E3A5D4 /* Service */,
-				1172082425392E1D005526F4 /* Feature */,
+				1172082425392E1D005526F4 /* ViewControllers */,
 				1175EDE52536E3BB001B8A79 /* Storyboard */,
 				1175EDE82536F29F001B8A79 /* SupportFile */,
 			);
@@ -278,6 +288,25 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		11EFC89725A825280005E438 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				11EFC89325A825220005E438 /* TabBarViewController.h */,
+				11EFC89425A825220005E438 /* TabBarViewController.m */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		11EFC89925A82A260005E438 /* UserInfor */ = {
+			isa = PBXGroup;
+			children = (
+				11EFC89A25A82A460005E438 /* UserInfoViewController.h */,
+				11EFC89B25A82A460005E438 /* UserInfoViewController.m */,
+				11EFC89C25A82A460005E438 /* UserInfoViewController.xib */,
+			);
+			path = UserInfor;
+			sourceTree = "<group>";
+		};
 		B7211AB1C6713E7B9D768711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +382,7 @@
 				1175EDD42536A56B001B8A79 /* LaunchScreen.storyboard in Resources */,
 				1175EDD12536A56B001B8A79 /* Assets.xcassets in Resources */,
 				1175EDF02536F808001B8A79 /* ForgotPasswordViewController.xib in Resources */,
+				11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */,
 				11720826253936A2005526F4 /* MainScreen.storyboard in Resources */,
 				116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */,
 			);
@@ -409,8 +439,10 @@
 			files = (
 				1175EDEF2536F808001B8A79 /* ForgotPasswordViewController.m in Sources */,
 				1172082B25394330005526F4 /* AddClassViewController.m in Sources */,
+				11EFC89525A825220005E438 /* TabBarViewController.m in Sources */,
 				11449E91253FD88800A4D9F2 /* Student.m in Sources */,
 				1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */,
+				11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,

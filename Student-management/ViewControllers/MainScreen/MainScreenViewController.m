@@ -47,8 +47,17 @@ BOOL isFiltered = false;
     dataClass = [[NSMutableArray alloc] init];
     UINib *nibStudentCell = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self.tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
+    
+    // Left navigation button
+    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped:)];
+    self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;
+    
+    // Right navigation button
+    UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped:)];
+    self.parentViewController.navigationItem.rightBarButtonItem = rightNavButton;
 }
 
+// MARK: - Networking
 -(void) requestStudentData {
     [[_ref child:@"student"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSEnumerator *children = [snapshot children];
@@ -73,7 +82,7 @@ BOOL isFiltered = false;
     }];
 }
 
-//MARK:- IBAction
+//MARK:- Actions
 - (IBAction)segmentSelected:(id)sender {
     switch (_segmentOutlet.selectedSegmentIndex) {
         case 0:
@@ -103,7 +112,9 @@ BOOL isFiltered = false;
     [self.navigationController popViewControllerAnimated:true];
 }
 
-// MARK:- Configure tableview
+
+
+// MARK: - Table view delegate
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     StudentCell *studentCell;
@@ -133,6 +144,7 @@ BOOL isFiltered = false;
     }
 }
 
+// MARK: - Search bar delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     switch (_segmentOutlet.selectedSegmentIndex) {
         case 0:

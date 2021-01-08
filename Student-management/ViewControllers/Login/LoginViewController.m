@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <FirebaseDatabase.h>
+#import "TabBarViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -37,9 +38,12 @@
 
 - (IBAction)loginButtonTapped:(id)sender {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
-    MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
-    [self.navigationController pushViewController:mainScreenViewController animated:true];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
+//    MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
+//    [self.navigationController pushViewController:mainScreenViewController animated:true];
+    
+    TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+    [self.navigationController pushViewController:tabBarViewController animated:true];
     
 //        [[self.ref child:@"user"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 //            bool isLoginSuccess = true;

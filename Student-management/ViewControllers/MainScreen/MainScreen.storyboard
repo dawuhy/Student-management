@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m5g-k3-q7k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,15 @@
             <objects>
                 <viewController storyboardIdentifier="MainScreenViewController" id="ZjG-0c-eYI" customClass="MainScreenViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FCa-cc-JDI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" text="" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="2sZ-Z8-89X">
-                                <rect key="frame" x="0.0" y="44" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-6e-5ed">
-                                <rect key="frame" x="0.0" y="100" width="600" height="32"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="32"/>
                                 <segments>
                                     <segment title="DS Sinh Viên"/>
                                     <segment title="DS Lớp"/>
@@ -29,11 +32,12 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZ8-IG-raj">
-                                <rect key="frame" x="0.0" y="131" width="600" height="469"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="131" width="414" height="731"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="did-jx-2Nv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2sZ-Z8-89X" firstAttribute="leading" secondItem="did-jx-2Nv" secondAttribute="leading" id="91B-K6-Z9L"/>
                             <constraint firstItem="did-jx-2Nv" firstAttribute="trailing" secondItem="UWI-6e-5ed" secondAttribute="trailing" id="9Um-I4-OM7"/>
@@ -46,7 +50,6 @@
                             <constraint firstItem="UWI-6e-5ed" firstAttribute="leading" secondItem="did-jx-2Nv" secondAttribute="leading" id="qLi-QL-NXU"/>
                             <constraint firstItem="2sZ-Z8-89X" firstAttribute="trailing" secondItem="did-jx-2Nv" secondAttribute="trailing" id="sI5-wv-EHH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="did-jx-2Nv"/>
                     </view>
                     <navigationItem key="navigationItem" id="hbb-yY-G45">
                         <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.2" catalog="system" id="6Ej-aj-7ml">
@@ -70,27 +73,12 @@
             </objects>
             <point key="canvasLocation" x="1026.0869565217392" y="44.866071428571423"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a3l-uv-Muf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m5g-k3-q7k" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="54V-vn-H13">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ZjG-0c-eYI" kind="relationship" relationship="rootViewController" id="gP9-qv-kre"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WRp-7L-grf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="254" y="45"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="87"/>
+        <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="86"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -34,6 +34,10 @@
 		11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC89B25A82A460005E438 /* UserInfoViewController.m */; };
 		11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC89C25A82A460005E438 /* UserInfoViewController.xib */; };
 		11EFC8D725A886320005E438 /* Classs.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC8D625A886320005E438 /* Classs.m */; };
+		11EFC8E025A8920B0005E438 /* ExportTranscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC8DE25A8920B0005E438 /* ExportTranscriptViewController.m */; };
+		11EFC8E125A8920B0005E438 /* ExportTranscriptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC8DF25A8920B0005E438 /* ExportTranscriptViewController.xib */; };
+		11EFC8EF25A8A0570005E438 /* ClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC8ED25A8A0570005E438 /* ClassTableViewCell.m */; };
+		11EFC8F025A8A0570005E438 /* ClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC8EE25A8A0570005E438 /* ClassTableViewCell.xib */; };
 		F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,12 @@
 		11EFC89C25A82A460005E438 /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		11EFC8D525A886320005E438 /* Classs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Classs.h; sourceTree = "<group>"; };
 		11EFC8D625A886320005E438 /* Classs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Classs.m; sourceTree = "<group>"; };
+		11EFC8DD25A8920B0005E438 /* ExportTranscriptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportTranscriptViewController.h; sourceTree = "<group>"; };
+		11EFC8DE25A8920B0005E438 /* ExportTranscriptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportTranscriptViewController.m; sourceTree = "<group>"; };
+		11EFC8DF25A8920B0005E438 /* ExportTranscriptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportTranscriptViewController.xib; sourceTree = "<group>"; };
+		11EFC8EC25A8A0570005E438 /* ClassTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTableViewCell.h; sourceTree = "<group>"; };
+		11EFC8ED25A8A0570005E438 /* ClassTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewCell.m; sourceTree = "<group>"; };
+		11EFC8EE25A8A0570005E438 /* ClassTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassTableViewCell.xib; sourceTree = "<group>"; };
 		581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
 		D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,6 +159,7 @@
 		1172082425392E1D005526F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11EFC8DC25A891460005E438 /* ExportTranscript */,
 				11EFC89925A82A260005E438 /* UserInfor */,
 				11EFC89725A825280005E438 /* TabBar */,
 				11720827253942F9005526F4 /* AddClass */,
@@ -255,6 +266,7 @@
 		1175EDFA25370CF8001B8A79 /* AddStudent */ = {
 			isa = PBXGroup;
 			children = (
+				11EFC8EB25A8A0470005E438 /* ClassTableViewCell */,
 				1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */,
 				1175EDFB25370D0A001B8A79 /* AddStudentViewController.h */,
 				1175EDFC25370D0A001B8A79 /* AddStudentViewController.m */,
@@ -328,6 +340,26 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		11EFC8DC25A891460005E438 /* ExportTranscript */ = {
+			isa = PBXGroup;
+			children = (
+				11EFC8DD25A8920B0005E438 /* ExportTranscriptViewController.h */,
+				11EFC8DE25A8920B0005E438 /* ExportTranscriptViewController.m */,
+				11EFC8DF25A8920B0005E438 /* ExportTranscriptViewController.xib */,
+			);
+			path = ExportTranscript;
+			sourceTree = "<group>";
+		};
+		11EFC8EB25A8A0470005E438 /* ClassTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				11EFC8EC25A8A0570005E438 /* ClassTableViewCell.h */,
+				11EFC8ED25A8A0570005E438 /* ClassTableViewCell.m */,
+				11EFC8EE25A8A0570005E438 /* ClassTableViewCell.xib */,
+			);
+			path = ClassTableViewCell;
+			sourceTree = "<group>";
+		};
 		B7211AB1C6713E7B9D768711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,11 +429,13 @@
 			files = (
 				1175EDFF25370D0A001B8A79 /* AddStudentViewController.xib in Resources */,
 				1172082C25394330005526F4 /* AddClassViewController.xib in Resources */,
+				11EFC8E125A8920B0005E438 /* ExportTranscriptViewController.xib in Resources */,
 				1172082E25394AB2005526F4 /* GoogleService-Info.plist in Resources */,
 				1175EDE42536ACF1001B8A79 /* Login.storyboard in Resources */,
 				1175EDF72536FB0A001B8A79 /* SignUpViewController.xib in Resources */,
 				1175EDD42536A56B001B8A79 /* LaunchScreen.storyboard in Resources */,
 				1175EDD12536A56B001B8A79 /* Assets.xcassets in Resources */,
+				11EFC8F025A8A0570005E438 /* ClassTableViewCell.xib in Resources */,
 				1175EDF02536F808001B8A79 /* ForgotPasswordViewController.xib in Resources */,
 				11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */,
 				11720826253936A2005526F4 /* MainScreen.storyboard in Resources */,
@@ -466,10 +500,12 @@
 				11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
+				11EFC8EF25A8A0570005E438 /* ClassTableViewCell.m in Sources */,
 				11EFC8D725A886320005E438 /* Classs.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
 				1171BEAC253D8FF00023C43C /* User.m in Sources */,
 				116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */,
+				11EFC8E025A8920B0005E438 /* ExportTranscriptViewController.m in Sources */,
 				1175EDF62536FB0A001B8A79 /* SignUpViewController.m in Sources */,
 				1175EDD72536A56B001B8A79 /* main.m in Sources */,
 				1175EDFE25370D0A001B8A79 /* AddStudentViewController.m in Sources */,

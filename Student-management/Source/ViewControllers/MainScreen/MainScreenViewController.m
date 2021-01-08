@@ -7,7 +7,7 @@
 //
 
 #import "MainScreenViewController.h"
-#import "Classs.h"
+
 
 @interface MainScreenViewController ()
 
@@ -45,11 +45,11 @@
     [self->tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
     
     // Left navigation button
-    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped)];
+    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;
     
     // Right navigation button
-    UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStyleDone target:self action:@selector(addButtonTapped)];
+    UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = rightNavButton;
 }
 
@@ -110,6 +110,8 @@
 - (void)addButtonTapped {
     if (self.segmentOutlet.selectedSegmentIndex == 0) {
         AddStudentViewController *addStudentViewController = [[AddStudentViewController alloc] initWithNibName:@"AddStudentViewController" bundle:nil];
+        addStudentViewController.listClass = [[NSMutableArray alloc] init];
+        addStudentViewController.listClass = dataClass;
         [self.navigationController pushViewController:addStudentViewController animated:true];
     } else if (self.segmentOutlet.selectedSegmentIndex == 1) {
         AddClassViewController *addClassViewController = [[AddClassViewController alloc] initWithNibName:@"AddClassViewController" bundle:nil];

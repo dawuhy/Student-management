@@ -10,12 +10,13 @@
 #import "AddStudentViewController.h"
 #import "AddClassViewController.h"
 #import "StudentCell.h"
+#import "Classs.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
-    NSMutableArray *dataStudent;
-    NSMutableArray *dataClass;
+    NSMutableArray<Student*> *dataStudent;
+    NSMutableArray<Classs*> *dataClass;
     NSMutableArray *filteredData;
     BOOL isFiltered;
     

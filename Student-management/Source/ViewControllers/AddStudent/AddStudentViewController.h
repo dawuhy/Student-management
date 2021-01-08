@@ -7,14 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <Firebase.h>
 #import "FirebaseService.h"
 #import <FirebaseStorage/FirebaseStorage.h>
 #import <WaitSpinner.h>
+#import "Classs.h"
+#import "ClassTableViewCell.h"
+#import <CCDropDownMenus/CCDropDownMenus.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CCDropDownMenuDelegate> {
+    UITableView *tableViewClass;
+    GaiDropDownMenu *classDropDown;
+    __weak IBOutlet UIStackView *stackView;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -30,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property FIRStorageReference *storageRef;
 @property NSURL* avatarURL;
 @property WaitSpinner* spinner;
+
+@property NSMutableArray<Classs*> *listClass;
 
 @end
 

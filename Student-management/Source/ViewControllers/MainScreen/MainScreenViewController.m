@@ -7,25 +7,23 @@
 //
 
 #import "MainScreenViewController.h"
+#import "Classs.h"
 
 @interface MainScreenViewController ()
 
 @end
 
 @implementation MainScreenViewController
-NSMutableArray *dataStudent;
-NSMutableArray *dataClass;
 
-NSMutableArray *filteredData;
-BOOL isFiltered = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpVariable];
     [self setUpView];
-    
-    
     filteredData = dataStudent;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPage) name:@"reloadPage" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,23 +36,31 @@ BOOL isFiltered = false;
 // MARK:- Void function
 -(void)setUpView {
     self.navigationItem.title = @"Danh sách";
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self->tableView.delegate = self;
+    self->tableView.dataSource = self;
     self.searchBar.delegate = self;
     self.ref = [[FIRDatabase database] reference];
     
-    dataStudent = [[NSMutableArray alloc] init];
-    dataClass = [[NSMutableArray alloc] init];
     UINib *nibStudentCell = [UINib nibWithNibName:@"StudentCell" bundle:nil];
-    [self.tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
+    [self->tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
     
     // Left navigation button
-    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped:)];
+    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped)];
     self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;
     
     // Right navigation button
-    UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStyleDone target:self action:@selector(backButtonTapped:)];
+    UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStyleDone target:self action:@selector(addButtonTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = rightNavButton;
+}
+
+- (void)setUpVariable {
+    isFiltered = false;
+    dataStudent = [[NSMutableArray alloc] init];
+    dataClass = [[NSMutableArray alloc] init];
+}
+
+- (void)reloadPage {
+    [self->tableView reloadData];
 }
 
 // MARK: - Networking
@@ -64,8 +70,8 @@ BOOL isFiltered = false;
         FIRDataSnapshot *studentSnap;
         while (studentSnap = [children nextObject]) {
             Student *student = [[Student alloc] initWithName:studentSnap.value[@"name"] email:studentSnap.value[@"email"] dateOfBirth:studentSnap.value[@"dateOfBirth"] gender:studentSnap.value[@"gender"] avatarURLString:studentSnap.value[@"avatarURL"] numberPhone:studentSnap.value[@"numberPhone"] class:studentSnap.value[@"class"]];
-            [dataStudent addObject:student];
-            [self.tableView reloadData];
+            [self->dataStudent addObject:student];
+            [self->tableView reloadData];
         }
     }];
 }
@@ -75,9 +81,12 @@ BOOL isFiltered = false;
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *classSnap;
         while (classSnap = [children nextObject]) {
-            NSString *className = classSnap.key;
-            [dataClass addObject:className];
-            [self.tableView reloadData];
+//            NSString *className = classSnap.key;
+//            [self->dataClass addObject:className];
+//            [self->tableView reloadData];
+            Classs *class = [[Classs alloc] initWithName:classSnap.value[@"name"] numberOfStudents:(int)classSnap.value[@"numberOfStudents"]];
+            [self->dataClass addObject:class];
+            [self->tableView reloadData];
         }
     }];
 }
@@ -87,18 +96,18 @@ BOOL isFiltered = false;
     switch (_segmentOutlet.selectedSegmentIndex) {
         case 0:
             filteredData = dataStudent;
-            [self.tableView reloadData];
+            [self->tableView reloadData];
             break;
         case 1:
             filteredData = dataClass;
-            [self.tableView reloadData];
+            [self->tableView reloadData];
             break;
         default:
             break;
     }
 }
 
-- (IBAction)addButtonTapped:(id)sender {
+- (void)addButtonTapped {
     if (self.segmentOutlet.selectedSegmentIndex == 0) {
         AddStudentViewController *addStudentViewController = [[AddStudentViewController alloc] initWithNibName:@"AddStudentViewController" bundle:nil];
         [self.navigationController pushViewController:addStudentViewController animated:true];
@@ -108,7 +117,7 @@ BOOL isFiltered = false;
     }
 }
 
-- (IBAction)backButtonTapped:(id)sender {
+- (void)backButtonTapped {
     [self.navigationController popViewControllerAnimated:true];
 }
 
@@ -119,11 +128,14 @@ BOOL isFiltered = false;
     
     StudentCell *studentCell;
     if (_segmentOutlet.selectedSegmentIndex == 0) {
-        studentCell = [_tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
-        [studentCell configureWithStudentObject:filteredData[indexPath.row]];
+        studentCell = [self->tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
+//        [studentCell configureWithStudentObject:filteredData[indexPath.row]];
+        NSArray<Student*> *data= filteredData;
+        [studentCell configureWithName:data[indexPath.row].name class:data[indexPath.row].classs avatar:data[indexPath.row].avatar];
     } else {
-        studentCell = [self.tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
-        [studentCell configureWithClassName:filteredData[indexPath.row]];
+        studentCell = [self->tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
+        NSArray<Classs*> *data= filteredData;
+        [studentCell configureWithClassName:data[indexPath.row].name];
     }
     
     return studentCell;
@@ -159,7 +171,7 @@ BOOL isFiltered = false;
                     }
                 }
             }
-            [self.tableView reloadData];
+            [self->tableView reloadData];
             break;
         case 1:
             filteredData = [[NSMutableArray alloc] init];
@@ -173,7 +185,7 @@ BOOL isFiltered = false;
                     }
                 }
             }
-            [self.tableView reloadData];
+            [self->tableView reloadData];
         default:
             break;
     }

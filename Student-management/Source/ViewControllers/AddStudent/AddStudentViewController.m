@@ -7,6 +7,7 @@
 //
 
 #import "AddStudentViewController.h"
+#import <CCDropDownMenus/CCDropDownMenus.h>
 
 @interface AddStudentViewController ()
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initVariable];
     [self setUpView];
 }
 
@@ -27,18 +29,23 @@
 //MARK:- Void function
 -(void)setUpView {
     self.navigationItem.title = @"Thêm học sinh";
-    self.firebase = [[FirebaseService alloc] init];
-    self.storageRef = [[FIRStorage storage] reference];
     [self.maleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
     [self.femaleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
     
-    self.spinner = [[WaitSpinner alloc] init];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(submit:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(submit:)];
 }
 
--(void)showAlertWithMessage: (NSString*)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign up" message:message preferredStyle:UIAlertControllerStyleAlert];
+- (void)initVariable {
+    self.spinner = [[WaitSpinner alloc] init];
+    self.firebase = [[FirebaseService alloc] init];
+    self.storageRef = [[FIRStorage storage] reference];
+}
+
+-(void)showAlertWithTitle: (NSString*)title message:(NSString*)message{
+    if ([title isEqual:@""]) {
+        title = @"Notification";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
     
     [alert addAction:defaultAction];
@@ -62,32 +69,28 @@
     FIRStorageReference *imgRef = [self.storageRef child:[NSString stringWithFormat:@"images/%@.png", self.emailTextField.text]];
     NSData* imgData = UIImagePNGRepresentation(self.avatarImageView.image);
     UIImage *image = self.avatarImageView.image;
-    // Resize image
     // Check if the image size is too large
-    
     if ((imgData.length/1024) >= 1024) {
         while ((imgData.length/1024) >= 1024) {
-            NSLog(@"While start - The imagedata size is currently: %f KB", roundf(imgData.length/1024));
-            image = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width * 0.95, image.size.height * 0.95)];
-            imgData = UIImageJPEGRepresentation(image, 1);
-            NSLog(@"to: %f KB", roundf(imgData.length/1024));
+            image = [self imageWithImage:image convertToSize:CGSizeMake(image.size.width * 0.9, image.size.height * 0.9)];
+            imgData = UIImageJPEGRepresentation(image, 0.9);
+            NSLog(@"The imagedata size is currently: %f KB", roundf(imgData.length/1024));
         }
     }
     
-    [imgRef
-     putData:imgData
-     metadata:nil
-     completion:^(FIRStorageMetadata *metadata,
-                  NSError *error) {
+    [imgRef putData:imgData
+            metadata:nil
+            completion:^(FIRStorageMetadata *metadata, NSError *error) {
         if (error != nil) {
-            NSLog(@"**************\n%@\n**************", error.localizedDescription);
-            [self showAlertWithMessage:error.localizedDescription];
+            [self hideSpinner];
+            [self showAlertWithTitle:@"" message:error.localizedDescription];
         } else {
             // Metadata contains file metadata such as size, content-type, and download URL.
             //            int64_t size = metadata.size;
             // You can also access to download URL after upload.
             [imgRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
                 if (error != nil) {
+                    [self hideSpinner];
                     NSLog(@"**************\n%@\n**************", error.localizedDescription);
                 } else {
                     self.avatarURL = URL;
@@ -198,19 +201,19 @@
 
 -(BOOL) validateForm {
     if ([[self.nameTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqual: @""]) {
-        [self showAlertWithMessage:@"Do not leave your name blank."];
+        [self showAlertWithTitle:@"" message:@"Do not leave your name blank."];
         return false;
     } else if (![self validateEmailWithString:self.emailTextField.text]) {
-        [self showAlertWithMessage:@"Email is invalid."];
+        [self showAlertWithTitle:@"" message:@"Email is invalid."];
         return false;
     } else if (![self validateDateOfBirthWithString:self.dateOfBirthTextField.text]) {
-        [self showAlertWithMessage:@"Date of birth is invalid."];
+        [self showAlertWithTitle:@"" message:@"Date of birth is invalid."];
         return false;
     } else if (_maleButtonOutlet.selected == false && _femaleButtonOutlet.selected == false) {
-        [self showAlertWithMessage:@"Please fill gender."];
+        [self showAlertWithTitle:@"" message:@"Please fill gender."];
         return false;
     } else if ([[self.classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqualToString:@""]) {
-        [self showAlertWithMessage:@"Do not leave your class blank."];
+        [self showAlertWithTitle:@"" message:@"Do not leave your class blank."];
         return false;
     }
     return true;

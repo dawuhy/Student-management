@@ -33,6 +33,7 @@
 		11EFC89525A825220005E438 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC89425A825220005E438 /* TabBarViewController.m */; };
 		11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC89B25A82A460005E438 /* UserInfoViewController.m */; };
 		11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC89C25A82A460005E438 /* UserInfoViewController.xib */; };
+		11EFC8D725A886320005E438 /* Classs.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC8D625A886320005E438 /* Classs.m */; };
 		F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		11EFC89A25A82A460005E438 /* UserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		11EFC89B25A82A460005E438 /* UserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		11EFC89C25A82A460005E438 /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		11EFC8D525A886320005E438 /* Classs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Classs.h; sourceTree = "<group>"; };
+		11EFC8D625A886320005E438 /* Classs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Classs.m; sourceTree = "<group>"; };
 		581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
 		D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,6 +139,7 @@
 		1171BEAA253D8FD30023C43C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11EFC8D425A886200005E438 /* Class */,
 				11449E8E253FD86A00A4D9F2 /* User */,
 				11449E8D253FD86400A4D9F2 /* Student */,
 			);
@@ -188,9 +192,7 @@
 		1175EDC32536A569001B8A79 /* Student-management */ = {
 			isa = PBXGroup;
 			children = (
-				1171BEAA253D8FD30023C43C /* Model */,
-				1179DE822539769C00E3A5D4 /* Service */,
-				1172082425392E1D005526F4 /* ViewControllers */,
+				11EFC8CA25A879BF0005E438 /* Source */,
 				1175EDE52536E3BB001B8A79 /* Storyboard */,
 				1175EDE82536F29F001B8A79 /* SupportFile */,
 			);
@@ -263,10 +265,10 @@
 		1175EE0025371577001B8A79 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				116E28E8253FD55100E2ECF5 /* StudentCell */,
 				11720825253936A2005526F4 /* MainScreen.storyboard */,
 				1175EE0125371599001B8A79 /* MainScreenViewController.h */,
 				1175EE0225371599001B8A79 /* MainScreenViewController.m */,
-				116E28E8253FD55100E2ECF5 /* StudentCell */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -305,6 +307,25 @@
 				11EFC89C25A82A460005E438 /* UserInfoViewController.xib */,
 			);
 			path = UserInfor;
+			sourceTree = "<group>";
+		};
+		11EFC8CA25A879BF0005E438 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1179DE822539769C00E3A5D4 /* Service */,
+				1171BEAA253D8FD30023C43C /* Model */,
+				1172082425392E1D005526F4 /* ViewControllers */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		11EFC8D425A886200005E438 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				11EFC8D525A886320005E438 /* Classs.h */,
+				11EFC8D625A886320005E438 /* Classs.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		B7211AB1C6713E7B9D768711 /* Frameworks */ = {
@@ -445,6 +466,7 @@
 				11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
+				11EFC8D725A886320005E438 /* Classs.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
 				1171BEAC253D8FF00023C43C /* User.m in Sources */,
 				116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */,

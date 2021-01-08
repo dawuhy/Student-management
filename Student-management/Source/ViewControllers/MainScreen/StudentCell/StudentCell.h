@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *classLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
-- (void)configureWithStudentObject: (Student*)student;
+//- (void)configureWithStudentObject: (Student*)student;
+- (void)configureWithName: (NSString*)name class:(NSString*)class avatar:(UIImage*)imgAvatar;
 - (void)configureWithClassName: (NSString*)className;
 
 @end

@@ -13,11 +13,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface MainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate> {
+    NSMutableArray *dataStudent;
+    NSMutableArray *dataClass;
+    NSMutableArray *filteredData;
+    BOOL isFiltered;
+    
+    __weak IBOutlet UITableView *tableView;
+}
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentOutlet;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

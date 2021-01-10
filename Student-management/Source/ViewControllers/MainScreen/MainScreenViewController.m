@@ -15,22 +15,26 @@
 
 @implementation MainScreenViewController
 
-
+// MARK: View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setUpVariable];
     [self setUpView];
+    [self requestData];
     filteredData = dataStudent;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPage) name:@"reloadPage" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [dataStudent removeAllObjects];
-    [dataClass removeAllObjects];
-    [self requestStudentData];
-    [self requestClassData];
+    NSLog(@"viewWillAppear");
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:@"reloadDataMainScreen" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView) name:@"refreshMainScreen" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshMainScreen" object:nil];
 }
 
 // MARK:- Void function
@@ -40,14 +44,11 @@
     self->tableView.dataSource = self;
     self.searchBar.delegate = self;
     self.ref = [[FIRDatabase database] reference];
-    
     UINib *nibStudentCell = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self->tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
-    
     // Left navigation button
-    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrowshape.turn.up.left"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
+    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithTitle:@"Đăng xuất" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;
-    
     // Right navigation button
     UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
     self.parentViewController.navigationItem.rightBarButtonItem = rightNavButton;
@@ -59,8 +60,15 @@
     dataClass = [[NSMutableArray alloc] init];
 }
 
-- (void)reloadPage {
+- (void)refreshTableView {
     [self->tableView reloadData];
+}
+
+- (void)requestData {
+    [dataStudent removeAllObjects];
+    [dataClass removeAllObjects];
+    [self requestStudentData];
+    [self requestClassData];
 }
 
 // MARK: - Networking
@@ -120,10 +128,25 @@
 }
 
 - (void)backButtonTapped {
-    [self.navigationController popViewControllerAnimated:true];
+    [self showAlertSignOutWithTitle:@"Sign out" message:@"Do you want sign out?"];
 }
 
-
+- (void)showAlertSignOutWithTitle:(NSString*)title message:(NSString*)message {
+    if ([title isEqual:@""]) {
+        title = @"Notification";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    // Cancel action
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    // Ok action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:true];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:true completion:nil];
+}
 
 // MARK: - Table view delegate
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

@@ -25,7 +25,7 @@
 - (IBAction) submitButtonTapped:(id)sender {
     if ([self validateForm]) {
         [self saveClassInfo];
-        [self showAlertAndPopVC];
+        [self showAlertSuccess];
     }
 }
 
@@ -39,21 +39,22 @@
 }
 
 -(void) setUpView {
+    self.title = @"Thêm lớp học";
     self.firebase = [[FirebaseService alloc] init];
 }
 
--(void) saveClassInfo {
+- (void)saveClassInfo {
     [self.firebase addClassWithName:self.classTextField.text];
 }
 
--(void)showAlertWithMessage: (NSString*)message {
+- (void)showAlertWithMessage: (NSString*)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign up" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:true completion:nil];
 }
 
--(void) showAlertAndPopVC {
+- (void)showAlertSuccess {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Notification" message:@"Add class successfully." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:true];

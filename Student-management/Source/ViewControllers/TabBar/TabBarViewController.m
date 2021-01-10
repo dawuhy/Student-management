@@ -10,7 +10,7 @@
 #import "MainScreenViewController.h"
 #import "UserInfoViewController.h"
 
-@interface TabBarViewController ()
+@interface TabBarViewController () <UITabBarDelegate>
 
 @end
 
@@ -29,8 +29,8 @@
     mainScreenViewController.tabBarItem = tabBarItem;
     
     UserInfoViewController *userInfoViewController = [[UserInfoViewController alloc] init];
-    tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage systemImageNamed:@"person"] selectedImage:[UIImage systemImageNamed:@"person.fill"]];
-    userInfoViewController.tabBarItem = tabBarItem;
+    UITabBarItem *tabBarItem2 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage systemImageNamed:@"person"] selectedImage:[UIImage systemImageNamed:@"person.fill"]];
+    userInfoViewController.tabBarItem = tabBarItem2;
     
 //    self.viewControllers = [NSArray arrayWithObjects:navMainScreen, nil];
     self.viewControllers = @[mainScreenViewController, userInfoViewController];
@@ -38,14 +38,8 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// MARK: - Tabbar delegate
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    
 }
-*/
-
 @end

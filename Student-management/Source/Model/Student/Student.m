@@ -30,8 +30,7 @@
             self.avatar = [UIImage imageWithData: data];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-//            self.avatar = [UIImage imageWithData: data];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadPage" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMainScreen" object:nil];
         });
     });
 }

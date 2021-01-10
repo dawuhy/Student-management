@@ -37,42 +37,30 @@
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(submit:)];
     
     // Drop down of class
-    classDropDown = [[GaiDropDownMenu alloc] initWithFrame:_classTextField.frame title:@"Chọn lớp"];
-    CGRect frame = classDropDown.frame;
-//    frame.origin.x = 20;
-    frame.origin.x = 25;
-//    frame.origin.y = _dateOfBirthTextField.frame.origin.y + _dateOfBirthTextField.frame.size.height + 12;
-    frame.origin.y = _classTextField.frame.origin.y + stackView.frame.origin.y + self.navigationController.navigationBar.frame.size.height + 4;
-    frame.size.width = (self.view.frame.size.width - 90);
-    frame.size.height = 35;
-    classDropDown.frame = frame;
-    classDropDown.delegate = self;
-    classDropDown.numberOfRows = _listClass.count;
-    NSMutableArray *arrayClassName = [[NSMutableArray alloc] init];
-    for (int i=0; i<_listClass.count; i++) {
-        [arrayClassName addObject:_listClass[i].name];
-    }
-    classDropDown.textOfRows = arrayClassName;
-    [self.view addSubview:classDropDown];
-    classDropDown.inactiveColor = [UIColor blackColor];
+//    classDropDown = [[GaiDropDownMenu alloc] initWithFrame:_classTextField.frame title:@"Chọn lớp"];
+//    CGRect frame = classDropDown.frame;
+////    frame.origin.x = 20;
+//    frame.origin.x = 25;
+////    frame.origin.y = _dateOfBirthTextField.frame.origin.y + _dateOfBirthTextField.frame.size.height + 12;
+//    frame.origin.y = _classTextField.frame.origin.y + stackView.frame.origin.y + self.navigationController.navigationBar.frame.size.height + 4;
+//    frame.size.width = (self.view.frame.size.width - 90);
+//    frame.size.height = 35;
+//    classDropDown.frame = frame;
+//    classDropDown.delegate = self;
+//    classDropDown.numberOfRows = _listClass.count;
+//    NSMutableArray *arrayClassName = [[NSMutableArray alloc] init];
+//    for (int i=0; i<_listClass.count; i++) {
+//        [arrayClassName addObject:_listClass[i].name];
+//    }
+//    classDropDown.textOfRows = arrayClassName;
+//    [self.view addSubview:classDropDown];
+//    classDropDown.inactiveColor = [UIColor blackColor];
     
-//    _classTextField.delegate = self;
-//    // Table view drop down of class
-//    tableViewClass = [[UITableView alloc] initWithFrame: CGRectMake(
-//                    _classTextField.frame.origin.x,
-//                    _classTextField.frame.origin.y+_classTextField.frame.size.height,
-//                    _classTextField.frame.size.width,
-//                    44
-//                                                                    )];
-//    tableViewClass.delegate = self;
-//    tableViewClass.dataSource = self;
-//    [self.view addSubview: tableViewClass];
-//    tableViewClass.layer.cornerRadius = 10;
-//    tableViewClass.layer.masksToBounds = YES;
-//    [tableViewClass setHidden:true];
-//    [tableViewClass setScrollEnabled: false];
-//    UINib *nibClassCell = [UINib nibWithNibName:@"ClassTableViewCell" bundle:nil];
-//    [self->tableViewClass registerNib:nibClassCell forCellReuseIdentifier:@"ClassTableViewCell"];
+    // Picker class
+    pickerClass = [[UIPickerView alloc] init];
+    pickerClass.delegate = self;
+    pickerClass.dataSource = self;
+    [self setUpPickerFor:_classTextField];
 }
 
 - (void)initVariable {
@@ -81,7 +69,7 @@
     self.storageRef = [[FIRStorage storage] reference];
 }
 
--(void)showAlertWithTitle: (NSString*)title message:(NSString*)message{
+- (void)showAlertWithTitle: (NSString*)title message:(NSString*)message{
     if ([title isEqual:@""]) {
         title = @"Notification";
     }
@@ -123,7 +111,7 @@
             completion:^(FIRStorageMetadata *metadata, NSError *error) {
         if (error != nil) {
             [self hideSpinner];
-            [self showAlertWithTitle:@"" message:error.localizedDescription];
+            [self showAlertWithTitle:@"Error" message:error.localizedDescription];
         } else {
             // Metadata contains file metadata such as size, content-type, and download URL.
             //            int64_t size = metadata.size;
@@ -131,7 +119,7 @@
             [imgRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
                 if (error != nil) {
                     [self hideSpinner];
-                    NSLog(@"**************\n%@\n**************", error.localizedDescription);
+                    [self showAlertWithTitle:@"Error" message:error.localizedDescription];
                 } else {
                     self.avatarURL = URL;
                     NSLog(@"Upload image success.");
@@ -145,8 +133,6 @@
 }
 
 -(void) saveDataToFireBase {
-    //    [self.firebase addStudentWithName:_nameTextField.text email:_emailTextField.text class:_classTextField.text dateOfBirth:_dateOfBirthTextField.text gender:[NSNumber numberWithBool:(self.maleButtonOutlet.isSelected)] numberPhone:_numberPhoneTextField.text avatarURL:_avatarURL.absoluteString address:_addressTextField.text];
-    
     NSDictionary<NSString*, id> *studentDict = @{ @"name": _nameTextField.text,
                                                   @"email": _emailTextField.text,
                                                   @"class": _classTextField.text,
@@ -159,12 +145,12 @@
     [self.firebase addStudentWithDict:studentDict];
 }
 
--(void) showSpinner {
+- (void)showSpinner {
     [self.spinner showInView:self.view];
 }
 
 
--(void) hideSpinner {
+- (void)hideSpinner {
     [self.spinner hide];
 }
 
@@ -260,19 +246,51 @@
 }
 
 // MARK: - Text field delegate
-//- (void)textFieldDidEndEditing:(UITextField *)textField {
-//    if (textField == _classTextField) {
-//        [tableViewClass setHidden: true];
-//    }
-//}
-//
-//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-//    if (textField == _classTextField) {
-//        [self updateHeightTableview];
-//        [tableViewClass setHidden: false];
-//    }
-//    return YES;
-//}
+// MARK: - Picker delegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return _listClass.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return _listClass[row].name;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    //Did end scroll will select
+//    selectedPrefectureIndex = (int)row;
+    _classTextField.text = _listClass[row].name;
+}
+
+- (void)setUpPickerFor: (UITextField *)textField {
+    if (textField == _classTextField) {
+        //Add ToolBar on Picker
+        UIToolbar *toolbar = [[UIToolbar alloc] init];
+        toolbar.barStyle = UIBarStyleDefault;
+        NSString *done = @"Done";
+//        NSString *btnCancelDate = @"Cancel";
+        [toolbar sizeToFit];
+        textField.inputAccessoryView = toolbar;
+        
+        [pickerClass selectRow:0 inComponent:0 animated:YES];
+        textField.inputView = pickerClass;
+        toolbar.items = @[
+//                            [[UIBarButtonItem alloc]initWithTitle:btnCancelDate style:UIBarButtonItemStyleDone target:self action:@selector(cancelPicker)],
+                          [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil],
+                          [[UIBarButtonItem alloc]initWithTitle:done style:UIBarButtonItemStyleDone target:self action:@selector(tapDonePicker)]
+        ];
+    }
+}
+
+-(void)tapDonePicker {
+    NSInteger row = [pickerClass selectedRowInComponent:0];
+    _classTextField.text = _listClass[row].name;
+    
+    [self.view endEditing:YES];
+}
 
 // MARK: - Drop down delegate
 - (void)dropDownMenu:(CCDropDownMenu *)dropDownMenu didSelectRowAtIndex:(NSInteger)index {

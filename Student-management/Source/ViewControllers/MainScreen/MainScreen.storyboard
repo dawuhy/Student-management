@@ -24,7 +24,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-6e-5ed">
                                 <rect key="frame" x="0.0" y="100" width="414" height="32"/>
                                 <segments>
-                                    <segment title="DS Sinh Viên"/>
+                                    <segment title="DS Học Sinh"/>
                                     <segment title="DS Lớp"/>
                                 </segments>
                                 <connections>

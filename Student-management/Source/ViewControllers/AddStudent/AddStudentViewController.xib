@@ -150,7 +150,7 @@
                     <rect key="frame" x="40" y="573" width="334" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                    <state key="normal" title="Lưu">
+                    <state key="normal" title="Thêm học sinh">
                         <color key="titleColor" red="0.067546926440000002" green="0.44095295670000001" blue="0.73271065950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>

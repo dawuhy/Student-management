@@ -16,10 +16,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CCDropDownMenuDelegate> {
+@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CCDropDownMenuDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UITableView *tableViewClass;
-    GaiDropDownMenu *classDropDown;
+//    GaiDropDownMenu *classDropDown;
     __weak IBOutlet UIStackView *stackView;
+    UIPickerView *pickerClass;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;

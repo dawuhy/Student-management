@@ -51,7 +51,14 @@
 }
 
 - (void)addStudentWithDict: (NSDictionary*)studentDict {
-    [[[self.ref child: @"student"] childByAutoId] setValue: studentDict];
+//    [[[self.ref child: @"student"] childByAutoId] setValue: studentDict];
+    [[[self.ref child: @"student"] childByAutoId] setValue:studentDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error != nil) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataMainScreen" object:nil];
+        } else {
+            NSLog(@"ERROR: %@", error.localizedDescription);
+        }
+    }];
 }
 
 - (void)addClassWithName: (NSString*)name {

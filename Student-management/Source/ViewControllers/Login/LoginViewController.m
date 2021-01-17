@@ -37,35 +37,45 @@
 }
 
 - (IBAction)loginButtonTapped:(id)sender {
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
-//    MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
-//    [self.navigationController pushViewController:mainScreenViewController animated:true];
-    
+    // Dummy
     TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
     [self.navigationController pushViewController:tabBarViewController animated:true];
     
-//        [[self.ref child:@"user"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//            bool isLoginSuccess = true;
-//            NSLog(@"%@", self.passwordTextField.text);
-//            NSEnumerator *children = [snapshot children];
-//            FIRDataSnapshot *userAccount;
-//            while (userAccount = [children nextObject]) {
-//                if ([self.userNameTextField.text isEqualToString:[userAccount childSnapshotForPath:@"userName"].value]
-//                    && [self.passwordTextField.text isEqualToString:[userAccount childSnapshotForPath:@"password"].value]) {
-//                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
-//                    MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
-//                    [self.navigationController pushViewController:mainScreenViewController animated:true];
-//                    isLoginSuccess = true;
-//                    break;
-//                } else {
-//                    isLoginSuccess = false;
-//                }
+    // Custom
+//    [spinner showInView:self.view];
+//    [[self.ref child:@"user"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//        bool isLoginSuccess = true;
+//        NSEnumerator *children = [snapshot children];
+//        FIRDataSnapshot *userAccount;
+//        while (userAccount = [children nextObject]) {
+//            if ([self.userNameTextField.text isEqualToString:[userAccount childSnapshotForPath:@"userName"].value]
+//                && [self.passwordTextField.text isEqualToString:[userAccount childSnapshotForPath:@"password"].value]) {
+//                // Login success
+//                TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+//                [self.navigationController pushViewController:tabBarViewController animated:true];
+//                isLoginSuccess = true;
+//                break;
+//            } else {
+//                isLoginSuccess = false;
 //            }
-//            if (!isLoginSuccess) {
-//                [self showAlertWithMessage:@"Username or password incorrect."];
-//            }
-//        }];
+//        }
+//        if (!isLoginSuccess) {
+//            [self showAlertWithMessage:@"Username or password incorrect."];
+//        }
+//        [self->spinner hide];
+//    }];
+    
+    // Query
+//    [spinner showInView:self.view];
+//    [[[[self.ref child:@"user"] queryOrderedByChild:@"userName"] queryEqualToValue:self.userNameTextField.text] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//        if ([[[[snapshot children] nextObject] childSnapshotForPath:@"password"].value isEqualToString:self.passwordTextField.text]) {
+//            TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+//            [self.navigationController pushViewController:tabBarViewController animated:true];
+//        } else {
+//            [self showAlertWithMessage:@"Username or password incorrect."];
+//        }
+//        [self->spinner hide];
+//    }];
 }
 
 -(void) showAlertWithMessage: (NSString*)message {

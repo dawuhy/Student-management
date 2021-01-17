@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    spinner = [[WaitSpinner alloc] init];
     ref = [[FIRDatabase database] reference];
     [self setUpView];
 }
@@ -44,12 +43,12 @@
 }
 
 - (void)saveClassInfo {
-    [spinner showInView: self.view];
+    [Utils.shared startIndicator:self.view];
     NSDictionary<NSString*, id> *dic = @{ @"name": classTextField.text,
                                           @"numberOfStudents": @30,
     };
     [[[ref child:@"class"] child:classTextField.text] setValue:dic withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        [self->spinner hide];
+        [Utils.shared stopIndicator];
         if (error) {
             [Utils.shared showAlertWithTitle:@"Error" message:error.localizedDescription titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {}];
         } else {

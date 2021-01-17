@@ -28,12 +28,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"viewWillAppear");
     
+    [self setUpNavigation];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:@"reloadDataMainScreen" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView) name:@"refreshMainScreen" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshMainScreen" object:nil];
 }
 
@@ -46,8 +49,11 @@
     self.ref = [[FIRDatabase database] reference];
     UINib *nibStudentCell = [UINib nibWithNibName:@"StudentCell" bundle:nil];
     [self->tableView registerNib:nibStudentCell forCellReuseIdentifier:@"StudentCell"];
+}
+
+- (void)setUpNavigation {
     // Left navigation button
-    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithTitle:@"Đăng xuất" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
+    UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"power"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;
     // Right navigation button
     UIBarButtonItem *rightNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addButtonTapped)];
@@ -73,18 +79,21 @@
 
 // MARK: - Networking
 -(void) requestStudentData {
+    [Utils.shared startIndicator:self.view];
     [[_ref child:@"student"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *studentSnap;
         while (studentSnap = [children nextObject]) {
             Student *student = [[Student alloc] initWithName:studentSnap.value[@"name"] email:studentSnap.value[@"email"] dateOfBirth:studentSnap.value[@"dateOfBirth"] gender:studentSnap.value[@"gender"] avatarURLString:studentSnap.value[@"avatarURL"] numberPhone:studentSnap.value[@"numberPhone"] class:studentSnap.value[@"class"]];
             [self->dataStudent addObject:student];
-            [self->tableView reloadData];
         }
+        [Utils.shared stopIndicator];
+        [self->tableView reloadData];
     }];
 }
 
--(void) requestClassData {
+- (void)requestClassData {
+    [Utils.shared startIndicator:self.view];
     [[_ref child:@"class"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *classSnap;
@@ -94,8 +103,9 @@
 //            [self->tableView reloadData];
             Classs *class = [[Classs alloc] initWithName:classSnap.value[@"name"] numberOfStudents:(int)classSnap.value[@"numberOfStudents"]];
             [self->dataClass addObject:class];
-            [self->tableView reloadData];
         }
+        [Utils.shared stopIndicator];
+        [self->tableView reloadData];
     }];
 }
 
@@ -203,10 +213,17 @@
             if (searchText.length == 0) {
                 filteredData = dataClass;
             } else {
-                for (NSString *className in dataClass) {
-                    NSRange nameRange = [className rangeOfString:searchText options:NSCaseInsensitiveSearch];
+//                for (NSString *className in dataClass) {
+//                    NSRange nameRange = [className rangeOfString:searchText options:NSCaseInsensitiveSearch];
+//                    if (nameRange.location != NSNotFound) {
+//                        [filteredData addObject:className];
+//                    }
+//                }
+                
+                for (Classs *class in dataClass) {
+                    NSRange nameRange = [class.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
                     if (nameRange.location != NSNotFound) {
-                        [filteredData addObject:className];
+                        [filteredData addObject:class];
                     }
                 }
             }

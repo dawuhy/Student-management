@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yM-gE-aT1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yM-gE-aT1">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +45,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-fk-npC">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-fk-npC">
                                                 <rect key="frame" x="0.0" y="98.999999999999943" width="354" height="40"/>
                                                 <color key="backgroundColor" red="0.067709803580000005" green="0.4406805634" blue="0.7407614589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -57,7 +59,7 @@
                                                     <action selector="loginButtonTapped:" destination="6ck-Id-NVT" eventType="touchUpInside" id="2Ij-TR-7YG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-ML-ZaH">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-ML-ZaH">
                                                 <rect key="frame" x="0.0" y="150.99999999999994" width="354" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kaw-vj-n7k"/>
@@ -70,7 +72,7 @@
                                                     <action selector="forgotPasswordTapped:" destination="6ck-Id-NVT" eventType="touchUpInside" id="HCi-N8-JiD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr4-2e-rQx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr4-2e-rQx">
                                                 <rect key="frame" x="0.0" y="192.99999999999994" width="354" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal" title="Đăng ký tài khoản mới">
@@ -85,7 +87,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="tZM-om-1f8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="aLe-HZ-aAM" secondAttribute="trailing" constant="30" id="0qP-LJ-Gft"/>
                             <constraint firstItem="aLe-HZ-aAM" firstAttribute="top" secondItem="tZM-om-1f8" secondAttribute="top" constant="100" id="BmO-fy-ipB"/>
@@ -93,7 +96,6 @@
                             <constraint firstItem="aLe-HZ-aAM" firstAttribute="top" secondItem="tZM-om-1f8" secondAttribute="top" constant="100" id="gW7-It-CeO"/>
                             <constraint firstItem="aLe-HZ-aAM" firstAttribute="leading" secondItem="0qA-3f-v1N" secondAttribute="leading" constant="30" id="kpX-y7-gy8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tZM-om-1f8"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="gW7-It-CeO"/>
@@ -143,5 +145,8 @@
     </scenes>
     <resources>
         <image name="logo" width="500" height="313"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

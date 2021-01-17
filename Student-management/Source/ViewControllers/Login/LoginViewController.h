@@ -11,7 +11,9 @@
 #import "ForgotPasswordViewController.h"
 #import "MainScreenViewController.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController {
+    
+}
     
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 

@@ -64,7 +64,6 @@
 }
 
 - (void)initVariable {
-    spinner = [[WaitSpinner alloc] init];
     self.storageRef = [[FIRStorage storage] reference];
     ref = [[FIRDatabase database] reference];
 }
@@ -92,7 +91,7 @@
 
 
 -(void) saveStudentInfo {
-    [self showSpinner];
+    [Utils.shared startIndicator:self.view];
     // Save avatar
     FIRStorageReference *imgRef = [self.storageRef child:[NSString stringWithFormat:@"images/%@.png", self.emailTextField.text]];
     NSData* imgData = UIImagePNGRepresentation(self.avatarImageView.image);
@@ -109,8 +108,8 @@
     [imgRef putData:imgData
             metadata:nil
             completion:^(FIRStorageMetadata *metadata, NSError *error) {
-        if (error != nil) {
-            [self hideSpinner];
+        if (error) {
+            [Utils.shared stopIndicator];
             [self showAlertWithTitle:@"Error" message:error.localizedDescription];
         } else {
             // Metadata contains file metadata such as size, content-type, and download URL.
@@ -118,7 +117,7 @@
             // You can also access to download URL after upload.
             [imgRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
                 if (error) {
-                    [self hideSpinner];
+                    
                     [self showAlertWithTitle:@"Error" message:error.localizedDescription];
                 } else {
                     self.avatarURL = URL;
@@ -132,6 +131,7 @@
 }
 
 -(void) saveDataToFireBase {
+    [Utils.shared startIndicator: self.view];
     NSDictionary<NSString*, id> *studentDict = @{ @"name": _nameTextField.text,
                                                   @"email": _emailTextField.text,
                                                   @"class": _classTextField.text,
@@ -146,7 +146,7 @@
             NSLog(@"ERROR: %@", error.localizedDescription);
             [Utils.shared showAlertWithTitle:@"Error" message:error.localizedDescription titleOk:@"OK" callbackAction:^(UIAlertAction * actionOk) {}];
         } else {
-            [self hideSpinner];
+            [Utils.shared stopIndicator];
             [Utils.shared showAlertWithTitle:@"Notification" message:@"Add student success" titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {
                 [self.navigationController popViewControllerAnimated:true];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataMainScreen" object:nil];
@@ -154,15 +154,6 @@
             
         }
     }];
-}
-
-- (void)showSpinner {
-    [spinner showInView:self.view];
-}
-
-
-- (void)hideSpinner {
-    [spinner hide];
 }
 
 //MARK:- IBAction

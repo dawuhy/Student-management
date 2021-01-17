@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <FirebaseStorage/FirebaseStorage.h>
-#import <WaitSpinner.h>
 #import "Classs.h"
 #import "ClassTableViewCell.h"
 #import <CCDropDownMenus/CCDropDownMenus.h>
@@ -22,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
     __weak IBOutlet UIStackView *stackView;
     UIPickerView *pickerClass;
     FIRDatabaseReference *ref;
-    WaitSpinner* spinner;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;

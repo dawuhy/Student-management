@@ -36,18 +36,20 @@
 }
 
 -(void)signUpAccount {
-//    [self.firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
-        NSDictionary<NSString*, id> *userDict = @{ @"userName": self.userNameTextField.text,
-                                              @"password": self.passwordTextField.text,
-                                              @"email": self.emailTextField.text,
-                                              @"dateOfBirth": self.dateOfBirthTextField.text,
-                                              @"numberPhone": self.numberPhoneTextField.text };
-//    [self.firebase addUserWithDict: userDict];
+    [Utils.shared startIndicator:self.view];
+    NSDictionary<NSString*, id> *userDict = @{ @"userName": self.userNameTextField.text,
+                                               @"password": self.passwordTextField.text,
+                                               @"email": self.emailTextField.text,
+                                               @"dateOfBirth": self.dateOfBirthTextField.text,
+                                               @"numberPhone": self.numberPhoneTextField.text };
     [[[ref child:@"user"] childByAutoId] setValue:userDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         if (error) {
-            NSLog(@"ERROR: %@", error.localizedDescription);
+            [Utils.shared showAlertWithTitle:@"Error" message:error.localizedDescription titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {}];
         } else {
-            
+            [Utils.shared stopIndicator];
+            [Utils.shared showAlertWithTitle:@"" message:@"Register success." titleOk:@"OK" callbackAction:^(UIAlertAction * actionOk) {
+                [self.navigationController popViewControllerAnimated:true];
+            }];
         }
     }];
 }
@@ -60,7 +62,6 @@
 - (IBAction)submitButtonTapped:(id)sender {
     if ([self validateForm]) {
         [self signUpAccount];
-        [self showAlertAndPopVC];
     }
 }
 
@@ -99,7 +100,7 @@
 }
 
 -(BOOL)validateConfirmPassword {
-    return (self.passwordTextField.text == self.confirmPasswordTextField.text);
+    return ([self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]);
 }
 
 -(BOOL)validateForm {
@@ -115,13 +116,15 @@
         return false;
     }else if (![self validatePassword]) {
         [self showAlertWithMessage:@"1. Password length is 8.\n2. One Alphabet in Password.\n3. One Special Character in Password. "];
-    } else if([self validateConfirmPassword]) {
+        return false;
+    } else if(![self validateConfirmPassword]) {
         [self showAlertWithMessage:@"Re-enter password does not match."];
         return false;
     } else if(!self.confirmInfomationButtonOutlet.selected) {
         [self showAlertWithMessage:@"Unconfirmed information."];
         return false;
     }
+    
     return true;
 }
 

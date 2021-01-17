@@ -9,6 +9,7 @@
 #import "TabBarViewController.h"
 #import "MainScreenViewController.h"
 #import "UserInfoViewController.h"
+#import "ExportTranscriptViewController.h"
 
 @interface TabBarViewController () <UITabBarDelegate>
 
@@ -22,7 +23,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-//    MainScreenViewController *mainScreen = [[MainScreenViewController alloc] init];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
     MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage systemImageNamed:@"house"] selectedImage:[UIImage systemImageNamed:@"house.fill"]];
@@ -32,8 +32,14 @@
     UITabBarItem *tabBarItem2 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage systemImageNamed:@"person"] selectedImage:[UIImage systemImageNamed:@"person.fill"]];
     userInfoViewController.tabBarItem = tabBarItem2;
     
-//    self.viewControllers = [NSArray arrayWithObjects:navMainScreen, nil];
-    self.viewControllers = @[mainScreenViewController, userInfoViewController];
+    ExportTranscriptViewController *exportTranscriptViewController = [[ExportTranscriptViewController alloc] init];
+    UITabBarItem *tabBarItem3 = [[UITabBarItem alloc] initWithTitle:@"Export transcript" image:[UIImage systemImageNamed:@"arrow.up.doc"] selectedImage:[UIImage systemImageNamed:@"arrow.up.doc.fill"]];
+    exportTranscriptViewController.tabBarItem = tabBarItem3;
+    
+    self.viewControllers = @[mainScreenViewController,
+                             exportTranscriptViewController,
+                             userInfoViewController,
+                             ];
     
     
 }

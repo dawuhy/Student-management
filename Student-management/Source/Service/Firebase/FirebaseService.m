@@ -18,55 +18,36 @@
     return self;
 }
 
--(void)addUserWithUserName: (NSString*)userName password:(NSString*)password email:(NSString*)email dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone {
-    
-    NSDictionary<NSString*, id> *dic = @{ @"userName": userName,
-                                          @"password": password,
-                                          @"email": email,
-                                          @"dateOfBirth": dateOfBirth,
-                                          @"numberPhone": numberPhone };
-    
-    [[[self.ref child:@"user"] childByAutoId] setValue:dic];
-    
-//    [[[self.ref child:@"user"] childByAutoId] setValue:dic withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-//        if (error) {
-//            printf("Add user fail.");
-//        } else {
-//            printf("Add user successfully.");
-//        }
-//    }];
-}
-
-- (void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth gender:(NSNumber*)gender numberPhone:(NSString*)numberPhone avatarURL:(NSString*)avatarURL address:(NSString*)address {
-    NSDictionary<NSString*, id> *dic = @{ @"name": name,
-                                          @"email": email,
-                                          @"class": class,
-                                          @"dateOfBirth": dateOfBirth,
-                                          @"gender": gender,
-                                          @"numberPhone": numberPhone,
-                                          @"address": address,
-                                          @"avatarURL": avatarURL
-    };
-    [[[self.ref child:@"student"] childByAutoId] setValue:dic];
+- (void)addUserWithDict: (NSDictionary *)userDict {
+    [[[self.ref child:@"user"] childByAutoId] setValue:userDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error) {
+            NSLog(@"ERROR: %@", error.localizedDescription);
+        } else {
+            
+        }
+    }];
 }
 
 - (void)addStudentWithDict: (NSDictionary*)studentDict {
-//    [[[self.ref child: @"student"] childByAutoId] setValue: studentDict];
     [[[self.ref child: @"student"] childByAutoId] setValue:studentDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        if (error != nil) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataMainScreen" object:nil];
-        } else {
+        if (error) {
             NSLog(@"ERROR: %@", error.localizedDescription);
+        } else {
+            [Utils.shared showAlertWithTitle:@"Notification" message:@"Add student success" titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {
+                [[self getTopViewController].navigationController popViewControllerAnimated:true];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataMainScreen" object:nil];
+            }];
+            
         }
     }];
 }
 
 - (void)addClassWithName: (NSString*)name {
     NSDictionary<NSString*, id> *dic = @{ @"name": name };
-    [[[self.ref child:@"class"] child:[NSString stringWithFormat:@"%@", name]] setValue:dic];
+    [[[self.ref child:@"class"] child:name] setValue:dic];
 }
 
--(BOOL)authenticateWithUserName:(NSString*)userName andPassword:(NSString*)password {
+- (BOOL)authenticateWithUserName:(NSString*)userName andPassword:(NSString*)password {
     [[_ref child:@"user"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *userAccount;
@@ -79,6 +60,14 @@
         }
     }];
     return false;
+}
+
+- (UIViewController *)getTopViewController {
+    UIViewController *topController = [UIApplication sharedApplication].windows[0].rootViewController;
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    return topController;
 }
 
 @end

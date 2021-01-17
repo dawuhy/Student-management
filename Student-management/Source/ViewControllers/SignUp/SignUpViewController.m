@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    ref = [[FIRDatabase database] reference];
     [self setUpView];
 }
 
@@ -31,21 +32,24 @@
 
 -(void)setUpView {
     self.navigationItem.title = @"Đăng ký";
-    self.firebase = [[FirebaseService alloc] init];
     [self.confirmInfomationButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
 }
 
 -(void)signUpAccount {
-    [self.firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
-    
-    // Authenticate way
-    //    [[FIRAuth auth] createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-    //        if (error != nil) {
-    //            [self showAlertWithMessage:@"Sign up failure."];
-    //        } else {
-    //
-    //        }
-    //    }];
+//    [self.firebase addUserWithUserName:self.userNameTextField.text password:self.passwordTextField.text email:self.emailTextField.text dateOfBirth:self.dateOfBirthTextField.text numberPhone:self.numberPhoneTextField.text];
+        NSDictionary<NSString*, id> *userDict = @{ @"userName": self.userNameTextField.text,
+                                              @"password": self.passwordTextField.text,
+                                              @"email": self.emailTextField.text,
+                                              @"dateOfBirth": self.dateOfBirthTextField.text,
+                                              @"numberPhone": self.numberPhoneTextField.text };
+//    [self.firebase addUserWithDict: userDict];
+    [[[ref child:@"user"] childByAutoId] setValue:userDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error) {
+            NSLog(@"ERROR: %@", error.localizedDescription);
+        } else {
+            
+        }
+    }];
 }
 
 //MARK:- IBAction

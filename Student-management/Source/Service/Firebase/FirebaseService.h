@@ -11,19 +11,20 @@
 
 #import <Foundation/Foundation.h>
 #import <FirebaseDatabase.h>
+#import <UIKit/UIKit.h>
 #import "User.h"
+#import "Utils.h"
 
 @interface FirebaseService : NSObject
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 
 // Add user to firebase
--(void)addUserWithUserName: (NSString*)userName password:(NSString*)password email:(NSString*)email dateOfBirth:(NSString*)dateOfBirth numberPhone:(NSString*)numberPhone;
+//- (void)addUserWithDict: (NSDictionary *)userDict;
 // Add student to firebase
-- (void)addStudentWithName: (NSString*)name email:(NSString*)email class:(NSString*)class dateOfBirth:(NSString*)dateOfBirth gender:(NSNumber*)gender numberPhone:(NSString*)numberPhone avatarURL:(NSString*)avatarURL address:(NSString*)address;
-- (void)addStudentWithDict: (NSDictionary*)studentDict;
+//- (void)addStudentWithDict: (NSDictionary*)studentDict;
 // Add class to firebase
--(void) addClassWithName: (NSString*)name;
+//-(void) addClassWithName: (NSString*)name;
 // Authenticate login
 -(BOOL) authenticateWithUserName: (NSString*)userName andPassword:(NSString*)password;
 

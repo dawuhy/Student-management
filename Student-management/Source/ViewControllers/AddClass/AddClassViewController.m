@@ -9,7 +9,7 @@
 #import "AddClassViewController.h"
 
 @interface AddClassViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *classTextField;
+
 
 @end
 
@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    spinner = [[WaitSpinner alloc] init];
+    ref = [[FIRDatabase database] reference];
     [self setUpView];
 }
 
@@ -25,13 +27,12 @@
 - (IBAction) submitButtonTapped:(id)sender {
     if ([self validateForm]) {
         [self saveClassInfo];
-        [self showAlertSuccess];
     }
 }
 
 // MARK:- Customize function
 -(BOOL) validateForm {
-    if ([[_classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet] isEqualToString:@""]) {
+    if ([[classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet] isEqualToString:@""]) {
         [self showAlertWithMessage:@"Don't leave your class name blank."];
         return false;
     }
@@ -40,11 +41,22 @@
 
 -(void) setUpView {
     self.title = @"Thêm lớp học";
-    self.firebase = [[FirebaseService alloc] init];
 }
 
 - (void)saveClassInfo {
-    [self.firebase addClassWithName:self.classTextField.text];
+    [spinner showInView: self.view];
+    NSDictionary<NSString*, id> *dic = @{ @"name": classTextField.text,
+                                          @"numberOfStudents": @30,
+    };
+    [[[ref child:@"class"] child:classTextField.text] setValue:dic withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        [self->spinner hide];
+        if (error) {
+            [Utils.shared showAlertWithTitle:@"Error" message:error.localizedDescription titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {}];
+        } else {
+            [self showAlertSuccess];
+            [self.navigationController popViewControllerAnimated:true];
+        }
+    }];
 }
 
 - (void)showAlertWithMessage: (NSString*)message {

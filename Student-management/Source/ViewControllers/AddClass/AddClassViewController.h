@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FirebaseService.h"
+#import <FirebaseDatabase.h>
+#import "Utils.h"
+#import <WaitSpinner.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddClassViewController : UIViewController
+@interface AddClassViewController : UIViewController {
+    FIRDatabaseReference *ref;
+    UITextField *classTextField;
+    WaitSpinner* spinner;
+}
 
-@property (strong, nonatomic) FirebaseService *firebase;
+//@property (weak, nonatomic) IBOutlet UITextField *classTextField;
+//@property (strong, nonatomic) FirebaseService *firebase;
 
 @end
 

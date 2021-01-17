@@ -64,9 +64,9 @@
 }
 
 - (void)initVariable {
-    self.spinner = [[WaitSpinner alloc] init];
-    self.firebase = [[FirebaseService alloc] init];
+    spinner = [[WaitSpinner alloc] init];
     self.storageRef = [[FIRStorage storage] reference];
+    ref = [[FIRDatabase database] reference];
 }
 
 - (void)showAlertWithTitle: (NSString*)title message:(NSString*)message{
@@ -117,15 +117,14 @@
             //            int64_t size = metadata.size;
             // You can also access to download URL after upload.
             [imgRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
-                if (error != nil) {
+                if (error) {
                     [self hideSpinner];
                     [self showAlertWithTitle:@"Error" message:error.localizedDescription];
                 } else {
                     self.avatarURL = URL;
                     NSLog(@"Upload image success.");
                     [self saveDataToFireBase];
-                    [self showAlertAndPopVC];
-                    [self hideSpinner];
+                    
                 }
             }];
         }
@@ -142,16 +141,28 @@
                                                   @"address": _addressTextField.text,
                                                   @"avatarURL": _avatarURL.absoluteString
     };
-    [self.firebase addStudentWithDict:studentDict];
+    [[[ref child: @"student"] childByAutoId] setValue:studentDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error) {
+            NSLog(@"ERROR: %@", error.localizedDescription);
+            [Utils.shared showAlertWithTitle:@"Error" message:error.localizedDescription titleOk:@"OK" callbackAction:^(UIAlertAction * actionOk) {}];
+        } else {
+            [self hideSpinner];
+            [Utils.shared showAlertWithTitle:@"Notification" message:@"Add student success" titleOk:@"OK" callbackAction:^(UIAlertAction * actionOK) {
+                [self.navigationController popViewControllerAnimated:true];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataMainScreen" object:nil];
+            }];
+            
+        }
+    }];
 }
 
 - (void)showSpinner {
-    [self.spinner showInView:self.view];
+    [spinner showInView:self.view];
 }
 
 
 - (void)hideSpinner {
-    [self.spinner hide];
+    [spinner hide];
 }
 
 //MARK:- IBAction

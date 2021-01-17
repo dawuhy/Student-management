@@ -10,6 +10,7 @@
 		11449E91253FD88800A4D9F2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 11449E90253FD88800A4D9F2 /* Student.m */; };
 		116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116E28E4253FD54A00E2ECF5 /* StudentCell.m */; };
 		116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116E28E5253FD54A00E2ECF5 /* StudentCell.xib */; };
+		11708E0A25B42D7600C94949 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708E0925B42D7600C94949 /* Utils.m */; };
 		1171BEAC253D8FF00023C43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171BEAB253D8FF00023C43C /* User.m */; };
 		11720826253936A2005526F4 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11720825253936A2005526F4 /* MainScreen.storyboard */; };
 		1172082B25394330005526F4 /* AddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172082925394330005526F4 /* AddClassViewController.m */; };
@@ -48,6 +49,8 @@
 		116E28E3253FD54A00E2ECF5 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		116E28E4253FD54A00E2ECF5 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 		116E28E5253FD54A00E2ECF5 /* StudentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
+		11708E0825B42D7600C94949 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		11708E0925B42D7600C94949 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1171BEAB253D8FF00023C43C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		1171BEAD253D90DD0023C43C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		11720825253936A2005526F4 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
@@ -144,6 +147,15 @@
 				116E28E5253FD54A00E2ECF5 /* StudentCell.xib */,
 			);
 			path = StudentCell;
+			sourceTree = "<group>";
+		};
+		11708E0725B42D6A00C94949 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				11708E0825B42D7600C94949 /* Utils.h */,
+				11708E0925B42D7600C94949 /* Utils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1171BEAA253D8FD30023C43C /* Model */ = {
@@ -267,9 +279,9 @@
 			isa = PBXGroup;
 			children = (
 				11EFC8EB25A8A0470005E438 /* ClassTableViewCell */,
-				1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */,
 				1175EDFB25370D0A001B8A79 /* AddStudentViewController.h */,
 				1175EDFC25370D0A001B8A79 /* AddStudentViewController.m */,
+				1175EDFD25370D0A001B8A79 /* AddStudentViewController.xib */,
 			);
 			path = AddStudent;
 			sourceTree = "<group>";
@@ -278,9 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				116E28E8253FD55100E2ECF5 /* StudentCell */,
-				11720825253936A2005526F4 /* MainScreen.storyboard */,
 				1175EE0125371599001B8A79 /* MainScreenViewController.h */,
 				1175EE0225371599001B8A79 /* MainScreenViewController.m */,
+				11720825253936A2005526F4 /* MainScreen.storyboard */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -324,6 +336,7 @@
 		11EFC8CA25A879BF0005E438 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				11708E0725B42D6A00C94949 /* Utils */,
 				1179DE822539769C00E3A5D4 /* Service */,
 				1171BEAA253D8FD30023C43C /* Model */,
 				1172082425392E1D005526F4 /* ViewControllers */,
@@ -503,6 +516,7 @@
 				11EFC8EF25A8A0570005E438 /* ClassTableViewCell.m in Sources */,
 				11EFC8D725A886320005E438 /* Classs.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
+				11708E0A25B42D7600C94949 /* Utils.m in Sources */,
 				1171BEAC253D8FF00023C43C /* User.m in Sources */,
 				116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */,
 				11EFC8E025A8920B0005E438 /* ExportTranscriptViewController.m in Sources */,

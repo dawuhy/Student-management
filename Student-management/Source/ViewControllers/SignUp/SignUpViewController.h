@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FirebaseService.h"
+#import <FirebaseDatabase.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SignUpViewController : UIViewController
+@interface SignUpViewController : UIViewController {
+    FIRDatabaseReference *ref;
+}
 
-@property (strong, nonatomic) FirebaseService *firebase;
+//@property (strong, nonatomic) FirebaseService *firebase;
 
 @end
 

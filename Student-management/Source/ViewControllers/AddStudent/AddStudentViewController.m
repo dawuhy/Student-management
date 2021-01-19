@@ -33,34 +33,14 @@
     // Set image state selected of button
     [self.maleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
     [self.femaleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
-    // Right nav button
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(submit:)];
-    
-    // Drop down of class
-//    classDropDown = [[GaiDropDownMenu alloc] initWithFrame:_classTextField.frame title:@"Chọn lớp"];
-//    CGRect frame = classDropDown.frame;
-////    frame.origin.x = 20;
-//    frame.origin.x = 25;
-////    frame.origin.y = _dateOfBirthTextField.frame.origin.y + _dateOfBirthTextField.frame.size.height + 12;
-//    frame.origin.y = _classTextField.frame.origin.y + stackView.frame.origin.y + self.navigationController.navigationBar.frame.size.height + 4;
-//    frame.size.width = (self.view.frame.size.width - 90);
-//    frame.size.height = 35;
-//    classDropDown.frame = frame;
-//    classDropDown.delegate = self;
-//    classDropDown.numberOfRows = _listClass.count;
-//    NSMutableArray *arrayClassName = [[NSMutableArray alloc] init];
-//    for (int i=0; i<_listClass.count; i++) {
-//        [arrayClassName addObject:_listClass[i].name];
-//    }
-//    classDropDown.textOfRows = arrayClassName;
-//    [self.view addSubview:classDropDown];
-//    classDropDown.inactiveColor = [UIColor blackColor];
     
     // Picker class
     pickerClass = [[UIPickerView alloc] init];
     pickerClass.delegate = self;
     pickerClass.dataSource = self;
     [self setUpPickerFor:_classTextField];
+    
+    [self addArrowDownForTextField:self.dateOfBirthTextField];
 }
 
 - (void)initVariable {
@@ -154,6 +134,18 @@
             
         }
     }];
+}
+
+- (void)addArrowDownForTextField:(UITextField*)textField {
+    UIImageView *ivArrowDown = [[UIImageView alloc] init];
+    ivArrowDown.image = [UIImage systemImageNamed:@"arrowtriangle.down.fill"];
+    ivArrowDown.frame = CGRectMake(textField.frame.origin.x + stackView.frame.origin.x + textField.frame.size.width - 30,
+                                   textField.frame.origin.y + stackView.frame.origin.y + 12,
+                                   15,
+                                   8);
+    ivArrowDown.tintColor = [UIColor colorWithRed:20/255.0 green:110/255.0 blue:190/255.0 alpha:1];
+    
+    [self.view addSubview:ivArrowDown];
 }
 
 //MARK:- IBAction
@@ -293,37 +285,5 @@
     
     [self.view endEditing:YES];
 }
-
-// MARK: - Drop down delegate
-- (void)dropDownMenu:(CCDropDownMenu *)dropDownMenu didSelectRowAtIndex:(NSInteger)index {
-    _classTextField.text = _listClass[index].name;
-}
-
-// MARK: - Table view delegate
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return _listClass.count;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ClassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"ClassTableViewCell"];
-//    [cell configureCellWithClassName: _listClass[indexPath.row].name];
-//    return cell;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    _classTextField.text = _listClass[indexPath.row].name;
-//    [tableViewClass setHidden:true];
-//}
-//
-//- (void)updateHeightTableview {
-//    [tableViewClass layoutIfNeeded];
-//    CGRect frame;
-//    frame.size.height = tableViewClass.contentSize.height;
-//    tableViewClass.frame = frame;
-//}
 
 @end

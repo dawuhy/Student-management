@@ -16,17 +16,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setUpView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.parentViewController.navigationItem.title = @"Báo cáo tổng kết môn";
 }
-*/
+
+// MARK: Set up
+- (void)setUpView {
+    [self addArrowDownForTextField:txtSemester];
+    [self addArrowDownForTextField:txtSubject];
+}
+
+// MARK: Void func
+- (void)addArrowDownForTextField:(UITextField*)textField {
+    UIImageView *ivArrowDown = [[UIImageView alloc] init];
+    ivArrowDown.image = [UIImage systemImageNamed:@"arrowtriangle.down.fill"];
+    ivArrowDown.frame = CGRectMake(textField.frame.origin.x + stackView.frame.origin.x + textField.frame.size.width - 30,
+                                   textField.frame.origin.y + stackView.frame.origin.y + 12,
+                                   15,
+                                   8);
+    ivArrowDown.tintColor = [UIColor colorWithRed:20/255.0 green:110/255.0 blue:190/255.0 alpha:1];
+    
+    [self.view addSubview:ivArrowDown];
+}
 
 @end

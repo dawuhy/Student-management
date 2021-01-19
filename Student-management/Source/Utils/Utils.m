@@ -9,7 +9,6 @@
 #import "Utils.h"
 
 @implementation Utils
-
 + (Utils *)shared {
     static dispatch_once_t once;
     static id instance;

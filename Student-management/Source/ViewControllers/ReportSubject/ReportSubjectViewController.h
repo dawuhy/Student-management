@@ -10,7 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReportSubjectViewController : UIViewController
+@interface ReportSubjectViewController : UIViewController {
+    
+    __weak IBOutlet UIStackView *stackView;
+    __weak IBOutlet UITextField *txtSubject;
+    __weak IBOutlet UITextField *txtSemester;
+}
 
 @end
 

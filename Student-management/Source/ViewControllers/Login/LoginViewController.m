@@ -24,6 +24,12 @@
     self.ref = [[FIRDatabase database] reference];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.userNameTextField becomeFirstResponder];
+}
+
 //MARK:- IBAction
 
 - (IBAction)registerAccountTapped:(id)sender {
@@ -38,8 +44,8 @@
 
 - (IBAction)loginButtonTapped:(id)sender {
     // Dummy
-    TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
-    [self.navigationController pushViewController:tabBarViewController animated:true];
+//    TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+//    [self.navigationController pushViewController:tabBarViewController animated:true];
     
     // Custom
 //    [spinner showInView:self.view];
@@ -66,16 +72,19 @@
 //    }];
     
     // Query
-//    [spinner showInView:self.view];
-//    [[[[self.ref child:@"user"] queryOrderedByChild:@"userName"] queryEqualToValue:self.userNameTextField.text] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//        if ([[[[snapshot children] nextObject] childSnapshotForPath:@"password"].value isEqualToString:self.passwordTextField.text]) {
-//            TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
-//            [self.navigationController pushViewController:tabBarViewController animated:true];
-//        } else {
-//            [self showAlertWithMessage:@"Username or password incorrect."];
-//        }
-//        [self->spinner hide];
-//    }];
+    [Utils.shared startIndicator:self.view];
+    [[[[self.ref child:@"user"] queryOrderedByChild:@"userName"] queryEqualToValue:self.userNameTextField.text] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        if ([(NSString*)[[snapshot children] nextObject].value[@"password"] isEqualToString:self.passwordTextField.text]) {
+            TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
+            [self.navigationController pushViewController:tabBarViewController animated:true];
+            // Reset text fields
+            self.userNameTextField.text = @"";
+            self.passwordTextField.text = @"";
+        } else {
+            [self showAlertWithMessage:@"Username or password incorrect."];
+        }
+        [Utils.shared stopIndicator];
+    }];
 }
 
 -(void) showAlertWithMessage: (NSString*)message {

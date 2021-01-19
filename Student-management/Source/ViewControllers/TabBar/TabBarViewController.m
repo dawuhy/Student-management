@@ -10,6 +10,7 @@
 #import "MainScreenViewController.h"
 #import "UserInfoViewController.h"
 #import "ExportTranscriptViewController.h"
+#import "ReportSubjectViewController.h"
 
 @interface TabBarViewController () <UITabBarDelegate>
 
@@ -23,21 +24,27 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    // Item 1
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainScreen" bundle:nil];
     MainScreenViewController *mainScreenViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
-    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage systemImageNamed:@"house"] selectedImage:[UIImage systemImageNamed:@"house.fill"]];
-    mainScreenViewController.tabBarItem = tabBarItem;
-    
-    UserInfoViewController *userInfoViewController = [[UserInfoViewController alloc] init];
-    UITabBarItem *tabBarItem2 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage systemImageNamed:@"person"] selectedImage:[UIImage systemImageNamed:@"person.fill"]];
-    userInfoViewController.tabBarItem = tabBarItem2;
-    
+    UITabBarItem *tabBarMainScreen= [[UITabBarItem alloc] initWithTitle:@"Home" image:[UIImage systemImageNamed:@"house"] selectedImage:[UIImage systemImageNamed:@"house.fill"]];
+    mainScreenViewController.tabBarItem = tabBarMainScreen;
+    // Item 2
     ExportTranscriptViewController *exportTranscriptViewController = [[ExportTranscriptViewController alloc] init];
-    UITabBarItem *tabBarItem3 = [[UITabBarItem alloc] initWithTitle:@"Export transcript" image:[UIImage systemImageNamed:@"arrow.up.doc"] selectedImage:[UIImage systemImageNamed:@"arrow.up.doc.fill"]];
-    exportTranscriptViewController.tabBarItem = tabBarItem3;
+    UITabBarItem *tabBarExportTranscript = [[UITabBarItem alloc] initWithTitle:@"Export transcript" image:[UIImage systemImageNamed:@"arrow.up.doc"] selectedImage:[UIImage systemImageNamed:@"arrow.up.doc.fill"]];
+    exportTranscriptViewController.tabBarItem = tabBarExportTranscript;
+    // Item 3
+    ReportSubjectViewController *reportSubjectViewController = [[ReportSubjectViewController alloc] init];
+    UITabBarItem *tabBarReportSubject = [[UITabBarItem alloc] initWithTitle:@"Report subject" image:[UIImage systemImageNamed:@"chart.bar.doc.horizontal"] selectedImage:[UIImage systemImageNamed:@"chart.bar.doc.horizontal.fill"]];
+    reportSubjectViewController.tabBarItem = tabBarReportSubject;
+    // Item 4
+    UserInfoViewController *userInfoViewController = [[UserInfoViewController alloc] init];
+    UITabBarItem *tabBarUserInfo = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage systemImageNamed:@"person"] selectedImage:[UIImage systemImageNamed:@"person.fill"]];
+    userInfoViewController.tabBarItem = tabBarUserInfo;
     
     self.viewControllers = @[mainScreenViewController,
                              exportTranscriptViewController,
+                             reportSubjectViewController,
                              userInfoViewController,
                              ];
     

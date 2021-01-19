@@ -1,5 +1,4 @@
 PODS:
-  - CCDropDownMenus (0.1.2)
   - Firebase/Analytics (7.3.0):
     - Firebase/Core
   - Firebase/Core (7.3.0):
@@ -80,7 +79,6 @@ PODS:
   - WaitSpinner (0.1.2)
 
 DEPENDENCIES:
-  - CCDropDownMenus
   - Firebase/Analytics
   - Firebase/Database
   - Firebase/Storage
@@ -88,7 +86,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - CCDropDownMenus
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -106,7 +103,6 @@ SPEC REPOS:
     - WaitSpinner
 
 SPEC CHECKSUMS:
-  CCDropDownMenus: ee65b63286a16354907fdde49c40c1817f463470
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
@@ -123,6 +119,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   WaitSpinner: 26ab3ea5aaf5ef78994939f52560565f0f6e2d49
 
-PODFILE CHECKSUM: 525364b29b7e59b36a68a0f8e6bd2dc3d5fa7981
+PODFILE CHECKSUM: 57eeb16ceeb9f6e37229a8af8c6c763e7d48374b
 
 COCOAPODS: 1.9.3

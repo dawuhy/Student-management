@@ -10,6 +10,5 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'WaitSpinner'
-pod 'CCDropDownMenus'
 
 end

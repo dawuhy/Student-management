@@ -10,7 +10,14 @@
 		11449E91253FD88800A4D9F2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 11449E90253FD88800A4D9F2 /* Student.m */; };
 		116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116E28E4253FD54A00E2ECF5 /* StudentCell.m */; };
 		116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116E28E5253FD54A00E2ECF5 /* StudentCell.xib */; };
+		116EC95925B6C2BD0010153E /* TranscriptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116EC95825B6C2BD0010153E /* TranscriptModel.m */; };
+		116EC95F25B6D0E80010153E /* DisplayTranscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116EC95D25B6D0E80010153E /* DisplayTranscriptViewController.m */; };
+		116EC96025B6D0E80010153E /* DisplayTranscriptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116EC95E25B6D0E80010153E /* DisplayTranscriptViewController.xib */; };
+		116EC97125B6EC210010153E /* TranscriptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116EC96F25B6EC210010153E /* TranscriptTableViewCell.m */; };
+		116EC97225B6EC210010153E /* TranscriptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116EC97025B6EC210010153E /* TranscriptTableViewCell.xib */; };
 		11708E0A25B42D7600C94949 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708E0925B42D7600C94949 /* Utils.m */; };
+		11708E1B25B4831200C94949 /* ReportSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11708E1925B4831200C94949 /* ReportSubjectViewController.m */; };
+		11708E1C25B4831200C94949 /* ReportSubjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11708E1A25B4831200C94949 /* ReportSubjectViewController.xib */; };
 		1171BEAC253D8FF00023C43C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171BEAB253D8FF00023C43C /* User.m */; };
 		11720826253936A2005526F4 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11720825253936A2005526F4 /* MainScreen.storyboard */; };
 		1172082B25394330005526F4 /* AddClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1172082925394330005526F4 /* AddClassViewController.m */; };
@@ -39,18 +46,28 @@
 		11EFC8E125A8920B0005E438 /* ExportTranscriptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC8DF25A8920B0005E438 /* ExportTranscriptViewController.xib */; };
 		11EFC8EF25A8A0570005E438 /* ClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFC8ED25A8A0570005E438 /* ClassTableViewCell.m */; };
 		11EFC8F025A8A0570005E438 /* ClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EFC8EE25A8A0570005E438 /* ClassTableViewCell.xib */; };
-		F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */; };
+		BA67E62DC95B4A01738C9DF9 /* Pods_Student_management.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D83B3BA05C14151E568E066 /* Pods_Student_management.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.release.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.release.xcconfig"; sourceTree = "<group>"; };
 		11449E8F253FD87C00A4D9F2 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		11449E90253FD88800A4D9F2 /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
 		116E28E3253FD54A00E2ECF5 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		116E28E4253FD54A00E2ECF5 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 		116E28E5253FD54A00E2ECF5 /* StudentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
+		116EC95725B6C2BD0010153E /* TranscriptModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranscriptModel.h; sourceTree = "<group>"; };
+		116EC95825B6C2BD0010153E /* TranscriptModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranscriptModel.m; sourceTree = "<group>"; };
+		116EC95C25B6D0E80010153E /* DisplayTranscriptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayTranscriptViewController.h; sourceTree = "<group>"; };
+		116EC95D25B6D0E80010153E /* DisplayTranscriptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayTranscriptViewController.m; sourceTree = "<group>"; };
+		116EC95E25B6D0E80010153E /* DisplayTranscriptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayTranscriptViewController.xib; sourceTree = "<group>"; };
+		116EC96E25B6EC210010153E /* TranscriptTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranscriptTableViewCell.h; sourceTree = "<group>"; };
+		116EC96F25B6EC210010153E /* TranscriptTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranscriptTableViewCell.m; sourceTree = "<group>"; };
+		116EC97025B6EC210010153E /* TranscriptTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranscriptTableViewCell.xib; sourceTree = "<group>"; };
 		11708E0825B42D7600C94949 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		11708E0925B42D7600C94949 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		11708E1825B4831200C94949 /* ReportSubjectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportSubjectViewController.h; sourceTree = "<group>"; };
+		11708E1925B4831200C94949 /* ReportSubjectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportSubjectViewController.m; sourceTree = "<group>"; };
+		11708E1A25B4831200C94949 /* ReportSubjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportSubjectViewController.xib; sourceTree = "<group>"; };
 		1171BEAB253D8FF00023C43C /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		1171BEAD253D90DD0023C43C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		11720825253936A2005526F4 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
@@ -96,8 +113,9 @@
 		11EFC8EC25A8A0570005E438 /* ClassTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTableViewCell.h; sourceTree = "<group>"; };
 		11EFC8ED25A8A0570005E438 /* ClassTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewCell.m; sourceTree = "<group>"; };
 		11EFC8EE25A8A0570005E438 /* ClassTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassTableViewCell.xib; sourceTree = "<group>"; };
-		581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
-		D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D83B3BA05C14151E568E066 /* Pods_Student_management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Student_management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBCB522B9DAA8B1EEF1D4E8 /* Pods-Student-management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.release.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.release.xcconfig"; sourceTree = "<group>"; };
+		E60B4979DBFD80A5700468AE /* Pods-Student-management.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Student-management.debug.xcconfig"; path = "Target Support Files/Pods-Student-management/Pods-Student-management.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F06CC56797639DFFEBC238E1 /* Pods_Student_management.framework in Frameworks */,
+				BA67E62DC95B4A01738C9DF9 /* Pods_Student_management.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,8 +133,8 @@
 		00A8D20B65739CAE52A429E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */,
-				0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */,
+				E60B4979DBFD80A5700468AE /* Pods-Student-management.debug.xcconfig */,
+				ADBCB522B9DAA8B1EEF1D4E8 /* Pods-Student-management.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -149,6 +167,36 @@
 			path = StudentCell;
 			sourceTree = "<group>";
 		};
+		116EC95625B6C29C0010153E /* Transcript */ = {
+			isa = PBXGroup;
+			children = (
+				116EC95725B6C2BD0010153E /* TranscriptModel.h */,
+				116EC95825B6C2BD0010153E /* TranscriptModel.m */,
+			);
+			path = Transcript;
+			sourceTree = "<group>";
+		};
+		116EC95B25B6D0C10010153E /* DisplayTranscript */ = {
+			isa = PBXGroup;
+			children = (
+				116EC97425B6EC280010153E /* TranscriptTableViewCell */,
+				116EC95C25B6D0E80010153E /* DisplayTranscriptViewController.h */,
+				116EC95D25B6D0E80010153E /* DisplayTranscriptViewController.m */,
+				116EC95E25B6D0E80010153E /* DisplayTranscriptViewController.xib */,
+			);
+			path = DisplayTranscript;
+			sourceTree = "<group>";
+		};
+		116EC97425B6EC280010153E /* TranscriptTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				116EC96E25B6EC210010153E /* TranscriptTableViewCell.h */,
+				116EC96F25B6EC210010153E /* TranscriptTableViewCell.m */,
+				116EC97025B6EC210010153E /* TranscriptTableViewCell.xib */,
+			);
+			path = TranscriptTableViewCell;
+			sourceTree = "<group>";
+		};
 		11708E0725B42D6A00C94949 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,9 +206,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		11708E1725B482F900C94949 /* ReportSubject */ = {
+			isa = PBXGroup;
+			children = (
+				11708E1825B4831200C94949 /* ReportSubjectViewController.h */,
+				11708E1925B4831200C94949 /* ReportSubjectViewController.m */,
+				11708E1A25B4831200C94949 /* ReportSubjectViewController.xib */,
+			);
+			path = ReportSubject;
+			sourceTree = "<group>";
+		};
 		1171BEAA253D8FD30023C43C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				116EC95625B6C29C0010153E /* Transcript */,
 				11EFC8D425A886200005E438 /* Class */,
 				11449E8E253FD86A00A4D9F2 /* User */,
 				11449E8D253FD86400A4D9F2 /* Student */,
@@ -171,6 +230,7 @@
 		1172082425392E1D005526F4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11708E1725B482F900C94949 /* ReportSubject */,
 				11EFC89725A825280005E438 /* TabBar */,
 				11EFC8DC25A891460005E438 /* ExportTranscript */,
 				11EFC89925A82A260005E438 /* UserInfor */,
@@ -200,7 +260,7 @@
 				1175EDC32536A569001B8A79 /* Student-management */,
 				1175EDC22536A569001B8A79 /* Products */,
 				00A8D20B65739CAE52A429E6 /* Pods */,
-				B7211AB1C6713E7B9D768711 /* Frameworks */,
+				A8CE538FCE5B9B799ADEA49A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,6 +416,7 @@
 		11EFC8DC25A891460005E438 /* ExportTranscript */ = {
 			isa = PBXGroup;
 			children = (
+				116EC95B25B6D0C10010153E /* DisplayTranscript */,
 				11EFC8DD25A8920B0005E438 /* ExportTranscriptViewController.h */,
 				11EFC8DE25A8920B0005E438 /* ExportTranscriptViewController.m */,
 				11EFC8DF25A8920B0005E438 /* ExportTranscriptViewController.xib */,
@@ -373,10 +434,10 @@
 			path = ClassTableViewCell;
 			sourceTree = "<group>";
 		};
-		B7211AB1C6713E7B9D768711 /* Frameworks */ = {
+		A8CE538FCE5B9B799ADEA49A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D59E536D5BFDC7123527CE70 /* Pods_Student_management.framework */,
+				4D83B3BA05C14151E568E066 /* Pods_Student_management.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,11 +449,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1175EDDA2536A56B001B8A79 /* Build configuration list for PBXNativeTarget "Student-management" */;
 			buildPhases = (
-				5E6984850A835AC3F3C7C742 /* [CP] Check Pods Manifest.lock */,
+				91426912A99DF756D13F030E /* [CP] Check Pods Manifest.lock */,
 				1175EDBD2536A569001B8A79 /* Sources */,
 				1175EDBE2536A569001B8A79 /* Frameworks */,
 				1175EDBF2536A569001B8A79 /* Resources */,
-				9842127C4319E5296BF5EDEE /* [CP] Embed Pods Frameworks */,
+				44E46547DE42B222188DD86A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1175EDFF25370D0A001B8A79 /* AddStudentViewController.xib in Resources */,
+				116EC96025B6D0E80010153E /* DisplayTranscriptViewController.xib in Resources */,
 				1172082C25394330005526F4 /* AddClassViewController.xib in Resources */,
 				11EFC8E125A8920B0005E438 /* ExportTranscriptViewController.xib in Resources */,
 				1172082E25394AB2005526F4 /* GoogleService-Info.plist in Resources */,
@@ -448,7 +510,9 @@
 				1175EDF72536FB0A001B8A79 /* SignUpViewController.xib in Resources */,
 				1175EDD42536A56B001B8A79 /* LaunchScreen.storyboard in Resources */,
 				1175EDD12536A56B001B8A79 /* Assets.xcassets in Resources */,
+				116EC97225B6EC210010153E /* TranscriptTableViewCell.xib in Resources */,
 				11EFC8F025A8A0570005E438 /* ClassTableViewCell.xib in Resources */,
+				11708E1C25B4831200C94949 /* ReportSubjectViewController.xib in Resources */,
 				1175EDF02536F808001B8A79 /* ForgotPasswordViewController.xib in Resources */,
 				11EFC89E25A82A460005E438 /* UserInfoViewController.xib in Resources */,
 				11720826253936A2005526F4 /* MainScreen.storyboard in Resources */,
@@ -459,7 +523,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5E6984850A835AC3F3C7C742 /* [CP] Check Pods Manifest.lock */ = {
+		44E46547DE42B222188DD86A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91426912A99DF756D13F030E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -481,23 +562,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9842127C4319E5296BF5EDEE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Student-management/Pods-Student-management-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -508,16 +572,20 @@
 				1175EDEF2536F808001B8A79 /* ForgotPasswordViewController.m in Sources */,
 				1172082B25394330005526F4 /* AddClassViewController.m in Sources */,
 				11EFC89525A825220005E438 /* TabBarViewController.m in Sources */,
+				11708E1B25B4831200C94949 /* ReportSubjectViewController.m in Sources */,
 				11449E91253FD88800A4D9F2 /* Student.m in Sources */,
 				1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */,
 				11EFC89D25A82A460005E438 /* UserInfoViewController.m in Sources */,
 				1175EDCC2536A569001B8A79 /* LoginViewController.m in Sources */,
+				116EC95925B6C2BD0010153E /* TranscriptModel.m in Sources */,
 				1175EDC62536A569001B8A79 /* AppDelegate.m in Sources */,
 				11EFC8EF25A8A0570005E438 /* ClassTableViewCell.m in Sources */,
+				116EC95F25B6D0E80010153E /* DisplayTranscriptViewController.m in Sources */,
 				11EFC8D725A886320005E438 /* Classs.m in Sources */,
 				1175EE0425371599001B8A79 /* MainScreenViewController.m in Sources */,
 				11708E0A25B42D7600C94949 /* Utils.m in Sources */,
 				1171BEAC253D8FF00023C43C /* User.m in Sources */,
+				116EC97125B6EC210010153E /* TranscriptTableViewCell.m in Sources */,
 				116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */,
 				11EFC8E025A8920B0005E438 /* ExportTranscriptViewController.m in Sources */,
 				1175EDF62536FB0A001B8A79 /* SignUpViewController.m in Sources */,
@@ -653,7 +721,7 @@
 		};
 		1175EDDB2536A56B001B8A79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 581EB10D3D30992AF5AC7B82 /* Pods-Student-management.debug.xcconfig */;
+			baseConfigurationReference = E60B4979DBFD80A5700468AE /* Pods-Student-management.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,7 +739,7 @@
 		};
 		1175EDDC2536A56B001B8A79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E4DEFA59CCEC9ED8CB47EFC /* Pods-Student-management.release.xcconfig */;
+			baseConfigurationReference = ADBCB522B9DAA8B1EEF1D4E8 /* Pods-Student-management.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -19,7 +19,7 @@
                 <outlet property="maleButtonOutlet" destination="3zW-us-4Ah" id="kyD-Vg-7tf"/>
                 <outlet property="nameTextField" destination="RpI-1a-rZp" id="6Jv-Bf-chU"/>
                 <outlet property="numberPhoneTextField" destination="OZ4-Hc-XoX" id="zd6-nX-HV3"/>
-                <outlet property="stackView" destination="7WC-hE-bmS" id="c7u-Vp-x9r"/>
+                <outlet property="stackView" destination="7WC-hE-bmS" id="Qf7-6y-k98"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,6 +52,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Lớp" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Duy-xG-zsN">
                             <rect key="frame" x="0.0" y="209" width="374" height="35"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="wUC-Gs-lbW"/>
                             </constraints>

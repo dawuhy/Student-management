@@ -10,16 +10,15 @@
 #import <FirebaseStorage/FirebaseStorage.h>
 #import "Classs.h"
 #import "ClassTableViewCell.h"
-#import <CCDropDownMenus/CCDropDownMenus.h>
 #import <FirebaseDatabase.h>
 #import "Utils.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CCDropDownMenuDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UITableView *tableViewClass;
-    __weak IBOutlet UIStackView *stackView;
     UIPickerView *pickerClass;
+    __weak IBOutlet UIStackView *stackView;
     FIRDatabaseReference *ref;
 }
 

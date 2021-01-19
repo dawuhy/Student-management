@@ -52,6 +52,7 @@
 }
 
 - (void)setUpNavigation {
+    self.parentViewController.navigationItem.title = @"Trang chủ";
     // Left navigation button
     UIBarButtonItem *leftNavButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"power"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     self.parentViewController.navigationItem.leftBarButtonItem = leftNavButton;

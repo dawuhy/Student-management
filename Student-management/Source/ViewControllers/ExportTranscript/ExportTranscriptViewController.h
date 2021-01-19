@@ -10,6 +10,7 @@
 #import <FirebaseDatabase.h>
 #import "Classs.h"
 #import "Utils.h"
+#import "TranscriptModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,10 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
     __weak IBOutlet UITextField *txtSemester;
     UIPickerView *pickerClass;
     UIPickerView *pickerSubject;
+    UIPickerView *pickerSemester;
+    __weak IBOutlet UIStackView *stackView;
     
     FIRDatabaseReference *ref;
-    NSMutableArray<Classs*> *listClass;
+    NSMutableArray<NSString *> *listClass;
     NSMutableArray<NSString*> *listSubject;
+    NSMutableArray<NSString*> *listSemester;
+    NSMutableArray<TranscriptModel*> *listTranscript;
 }
 
 @end

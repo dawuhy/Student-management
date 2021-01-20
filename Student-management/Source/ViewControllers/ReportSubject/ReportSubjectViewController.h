@@ -7,14 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FIRDatabase.h>
+#import "StatisticalModel.h"
+#import "DisplayTranscriptViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReportSubjectViewController : UIViewController {
+@interface ReportSubjectViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate> {
     
     __weak IBOutlet UIStackView *stackView;
     __weak IBOutlet UITextField *txtSubject;
     __weak IBOutlet UITextField *txtSemester;
+    UIPickerView *pickerSubject;
+    UIPickerView *pickerSemester;
+    
+    FIRDatabaseReference *ref;
+    NSMutableArray<NSString*> *listSubject;
+    NSMutableArray<NSString*> *listSemester;
+    NSMutableArray<StatisticalModel*> *listStatistical;
 }
 
 @end

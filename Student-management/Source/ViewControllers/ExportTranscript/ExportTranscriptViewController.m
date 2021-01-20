@@ -98,23 +98,21 @@
     [listClass addObject:@"-- Chọn lớp --"];
     [pickerClass reloadAllComponents];
     [pickerClass selectRow:0 inComponent:0 animated:false];
-//    txtClass.text = listClass[0];
-    txtClass.text = @"10A1";    // TODO: change in future
+    txtClass.text = listClass[0];
 
     //Picker subject
     [listSubject removeAllObjects];
     [listSubject addObject:@"-- Chọn môn học --"];
     [pickerSubject reloadAllComponents];
     [pickerSubject selectRow:0 inComponent:0 animated:false];
-//    txtSubject.text = listSubject[0];
-    txtSubject.text = @"Toán";  // TODO: change in future
+    txtSubject.text = listSubject[0];
+
     // Picker semester
     [listSemester removeAllObjects];
     [listSemester addObject:@"-- Chọn học kỳ --"];
     [pickerSemester reloadAllComponents];
     [pickerSemester selectRow:0 inComponent:0 animated:false];
-//    txtSemester.text = listSemester[0];
-    txtSemester.text = @"Học kỳ 1";
+    txtSemester.text = listSemester[0];
 }
 
 - (void)requestData {
@@ -172,31 +170,12 @@
             TranscriptModel *transcriptModel = [[TranscriptModel alloc] initWithSnapShot:transcriptSnapShot];
             [self->listTranscript addObject:transcriptModel];
         }
-        
         DisplayTranscriptViewController *displayTranscriptViewController = [[DisplayTranscriptViewController alloc] initWithNibName:@"DisplayTranscriptViewController" bundle:nil];
         displayTranscriptViewController.listTranscript = [[NSMutableArray alloc] init];
         displayTranscriptViewController.listTranscript = self->listTranscript;
-//        [self.navigationController pushViewController:displayTranscriptViewController animated:YES];
         [self presentViewController:displayTranscriptViewController animated:YES completion:nil];
-        
         [Utils.shared stopIndicator];
     }];
-    
-//    [Utils.shared startIndicator:self.view];
-//    [[[[ref child:@"transcript"] queryOrderedByChild:@"class"] queryEqualToValue:txtClass.text] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//        NSEnumerator *children = [snapshot children];
-//        FIRDataSnapshot *transcriptSnapShot;
-//        while (transcriptSnapShot = [children nextObject]) {
-//            
-//        }
-//        if ([[[[snapshot children] nextObject] childSnapshotForPath:@"subject"].value isEqualToString:self->txtSubject.text]) {
-//            TabBarViewController *tabBarViewController = [[TabBarViewController alloc] init];
-//            [self.navigationController pushViewController:tabBarViewController animated:true];
-//        } else {
-//            [self showAlertWithMessage:@"Username or password incorrect."];
-//        }
-//        [Utils.shared stopIndicator];
-//    }];
 }
 
 // MARK: Set up picker
@@ -214,10 +193,7 @@
     ];
 }
 
--(void)tapDonePicker {
-    //    NSInteger row = [pickerClass selectedRowInComponent:0];
-    //    txtClass.text = listClass[row].name;
-    
+- (void)tapDonePicker {
     [self.view endEditing:YES];
 }
 

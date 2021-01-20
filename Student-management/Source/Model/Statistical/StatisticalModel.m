@@ -10,4 +10,12 @@
 
 @implementation StatisticalModel
 
+- (instancetype)initWithSnapShot:(FIRDataSnapshot*)snapShot {
+    self.className = snapShot.value[@"className"];
+    self.numberOfStudents = [snapShot.value[@"numberOfStudents"] intValue];
+    self.numberStudentsPassing = [snapShot.value[@"numberOfStudents"] intValue];
+    
+    return self;
+}
+
 @end

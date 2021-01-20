@@ -27,33 +27,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwV-D3-cuw">
-                        <rect key="frame" x="62" y="10" width="187" height="18"/>
+                        <rect key="frame" x="62" y="10" width="147" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdo-nc-ukl">
-                        <rect key="frame" x="269" y="10" width="30" height="18"/>
+                        <rect key="frame" x="229" y="10" width="40" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="gWa-83-gL6"/>
+                            <constraint firstAttribute="width" constant="40" id="gWa-83-gL6"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoy-5h-BKg">
-                        <rect key="frame" x="369" y="10" width="30" height="18"/>
+                        <rect key="frame" x="349" y="10" width="50" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="kkU-TB-xFq"/>
+                            <constraint firstAttribute="width" constant="50" id="kkU-TB-xFq"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBN-ph-dPd">
-                        <rect key="frame" x="319" y="10" width="30" height="18"/>
+                        <rect key="frame" x="289" y="10" width="40" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="Djx-4a-qKv"/>
+                            <constraint firstAttribute="width" constant="40" id="Djx-4a-qKv"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>

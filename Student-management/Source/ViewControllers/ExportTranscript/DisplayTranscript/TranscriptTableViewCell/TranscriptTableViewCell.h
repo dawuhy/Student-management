@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TranscriptModel.h"
+#import "StatisticalModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *lblFinalScore;
 
 // Function
-- (void)configureCellWith:(TranscriptModel*)transcriptModel numericalOrder:(int)numericalOrder;
+- (void)configureCellWithTranscriptModel:(TranscriptModel*)transcriptModel numericalOrder:(int)numericalOrder;
+
+- (void)configureCellWithStatisticalModel:(StatisticalModel*)statisticalModel numericalOrder:(int)numericalOrder;
 
 @end
 

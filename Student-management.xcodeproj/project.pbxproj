@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11449E91253FD88800A4D9F2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 11449E90253FD88800A4D9F2 /* Student.m */; };
+		116DCC9925B871A30020DB93 /* StatisticalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DCC9825B871A30020DB93 /* StatisticalModel.m */; };
 		116E28E6253FD54A00E2ECF5 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116E28E4253FD54A00E2ECF5 /* StudentCell.m */; };
 		116E28E7253FD54A00E2ECF5 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116E28E5253FD54A00E2ECF5 /* StudentCell.xib */; };
 		116EC95925B6C2BD0010153E /* TranscriptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116EC95825B6C2BD0010153E /* TranscriptModel.m */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		11449E8F253FD87C00A4D9F2 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		11449E90253FD88800A4D9F2 /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		116DCC9725B871A30020DB93 /* StatisticalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatisticalModel.h; sourceTree = "<group>"; };
+		116DCC9825B871A30020DB93 /* StatisticalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatisticalModel.m; sourceTree = "<group>"; };
 		116E28E3253FD54A00E2ECF5 /* StudentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
 		116E28E4253FD54A00E2ECF5 /* StudentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
 		116E28E5253FD54A00E2ECF5 /* StudentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
@@ -157,6 +160,15 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		116DCC9625B8718C0020DB93 /* Statistical */ = {
+			isa = PBXGroup;
+			children = (
+				116DCC9725B871A30020DB93 /* StatisticalModel.h */,
+				116DCC9825B871A30020DB93 /* StatisticalModel.m */,
+			);
+			path = Statistical;
+			sourceTree = "<group>";
+		};
 		116E28E8253FD55100E2ECF5 /* StudentCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +231,7 @@
 		1171BEAA253D8FD30023C43C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				116DCC9625B8718C0020DB93 /* Statistical */,
 				116EC95625B6C29C0010153E /* Transcript */,
 				11EFC8D425A886200005E438 /* Class */,
 				11449E8E253FD86A00A4D9F2 /* User */,
@@ -572,6 +585,7 @@
 				1175EDEF2536F808001B8A79 /* ForgotPasswordViewController.m in Sources */,
 				1172082B25394330005526F4 /* AddClassViewController.m in Sources */,
 				11EFC89525A825220005E438 /* TabBarViewController.m in Sources */,
+				116DCC9925B871A30020DB93 /* StatisticalModel.m in Sources */,
 				11708E1B25B4831200C94949 /* ReportSubjectViewController.m in Sources */,
 				11449E91253FD88800A4D9F2 /* Student.m in Sources */,
 				1179DE85253976F800E3A5D4 /* FirebaseService.m in Sources */,

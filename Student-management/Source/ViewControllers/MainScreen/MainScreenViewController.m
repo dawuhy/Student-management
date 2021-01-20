@@ -129,8 +129,12 @@
 - (void)addButtonTapped {
     if (self.segmentOutlet.selectedSegmentIndex == 0) {
         AddStudentViewController *addStudentViewController = [[AddStudentViewController alloc] initWithNibName:@"AddStudentViewController" bundle:nil];
-        addStudentViewController.listClass = [[NSMutableArray alloc] init];
-        addStudentViewController.listClass = dataClass;
+        addStudentViewController.listClassName = [[NSMutableArray alloc] init];
+        [addStudentViewController.listClassName addObject:@"-- Chọn lớp học --"];
+        for (int i=0 ; i<dataClass.count; i++) {
+            [addStudentViewController.listClassName addObject:dataClass[i].name];
+            
+        }
         [self.navigationController pushViewController:addStudentViewController animated:true];
     } else if (self.segmentOutlet.selectedSegmentIndex == 1) {
         AddClassViewController *addClassViewController = [[AddClassViewController alloc] initWithNibName:@"AddClassViewController" bundle:nil];
@@ -185,12 +189,12 @@
     return [filteredData count];
 }
 
-- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [filteredData removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-}
+//- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [filteredData removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
+//}
 
 // MARK: - Search bar delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {

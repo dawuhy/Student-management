@@ -10,16 +10,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddStudentViewController">
             <connections>
-                <outlet property="addressTextField" destination="ZNu-Ux-Bm7" id="4kk-cO-MlG"/>
+                <outlet property="addressTextField" destination="ZNu-Ux-Bm7" id="nVq-sI-CbY"/>
                 <outlet property="avatarImageView" destination="Efl-zD-cxN" id="7oY-p7-kbl"/>
-                <outlet property="classTextField" destination="Duy-xG-zsN" id="2XS-gv-bv1"/>
-                <outlet property="dateOfBirthTextField" destination="jK6-7z-M8R" id="j0n-j9-Awp"/>
-                <outlet property="emailTextField" destination="k6E-P1-wJv" id="mJ9-gY-sOJ"/>
+                <outlet property="classTextField" destination="Duy-xG-zsN" id="hYS-Vf-zz1"/>
+                <outlet property="dateOfBirthTextField" destination="jK6-7z-M8R" id="FpF-Ov-J6n"/>
+                <outlet property="emailTextField" destination="k6E-P1-wJv" id="8JL-Qz-YwQ"/>
                 <outlet property="femaleButtonOutlet" destination="gmF-9Y-dzN" id="YCd-Ik-5HQ"/>
                 <outlet property="maleButtonOutlet" destination="3zW-us-4Ah" id="kyD-Vg-7tf"/>
-                <outlet property="nameTextField" destination="RpI-1a-rZp" id="6Jv-Bf-chU"/>
-                <outlet property="numberPhoneTextField" destination="OZ4-Hc-XoX" id="zd6-nX-HV3"/>
-                <outlet property="stackView" destination="7WC-hE-bmS" id="Qf7-6y-k98"/>
+                <outlet property="nameTextField" destination="RpI-1a-rZp" id="GY5-IN-3es"/>
+                <outlet property="numberPhoneTextField" destination="OZ4-Hc-XoX" id="Shu-aH-ANT"/>
+                <outlet property="stackView" destination="7WC-hE-bmS" id="L4A-6k-1Yr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -62,6 +62,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*Ngày tháng năm sinh" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jK6-7z-M8R">
                             <rect key="frame" x="0.0" y="256" width="374" height="35"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="tYn-Mk-Y9p"/>
                             </constraints>

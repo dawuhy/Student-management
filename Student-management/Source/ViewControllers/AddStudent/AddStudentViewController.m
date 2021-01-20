@@ -27,7 +27,8 @@
 }
 
 //MARK:- Void function
--(void)setUpView {
+- (void)setUpView {
+    self.dateOfBirthTextField.delegate = self;
     // Title navigation
     self.navigationItem.title = @"Thêm học sinh";
     // Set image state selected of button
@@ -35,18 +36,34 @@
     [self.femaleButtonOutlet setBackgroundImage:[UIImage systemImageNamed:@"checkmark.square.fill"] forState:UIControlStateSelected];
     
     // Picker class
+    
     pickerClass = [[UIPickerView alloc] init];
     pickerClass.delegate = self;
     pickerClass.dataSource = self;
     [self setUpPickerFor:_classTextField];
+    isFillClass = false;
+    
+    // Date picker
+    datePicker = [[UIDatePicker alloc] init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+    [datePicker addTarget:self action:@selector(datePickerDidChange) forControlEvents:UIControlEventValueChanged];
+    [self setUpDateTimePickerFor: self.dateOfBirthTextField];
+    self.dateOfBirthTextField.text = @"-- Chọn ngày sinh --";
+    isFillDate = false;
     
     [self addArrowDownForTextField:self.dateOfBirthTextField];
+    [self addArrowDownForTextField:self.classTextField];
 }
 
 - (void)initVariable {
     self.storageRef = [[FIRStorage storage] reference];
     ref = [[FIRDatabase database] reference];
 }
+
+//- (reloadDataClassPicker) {
+//    
+//}
 
 - (void)showAlertWithTitle: (NSString*)title message:(NSString*)message{
     if ([title isEqual:@""]) {
@@ -59,7 +76,7 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
--(void) showAlertAndPopVC {
+- (void)showAlertAndPopVC {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Notification" message:@"Add student successfully." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:true];
@@ -86,8 +103,8 @@
     }
     
     [imgRef putData:imgData
-            metadata:nil
-            completion:^(FIRStorageMetadata *metadata, NSError *error) {
+           metadata:nil
+         completion:^(FIRStorageMetadata *metadata, NSError *error) {
         if (error) {
             [Utils.shared stopIndicator];
             [self showAlertWithTitle:@"Error" message:error.localizedDescription];
@@ -139,9 +156,16 @@
 - (void)addArrowDownForTextField:(UITextField*)textField {
     UIImageView *ivArrowDown = [[UIImageView alloc] init];
     ivArrowDown.image = [UIImage systemImageNamed:@"arrowtriangle.down.fill"];
-    ivArrowDown.frame = CGRectMake(textField.frame.origin.x + stackView.frame.origin.x + textField.frame.size.width - 30,
-                                   textField.frame.origin.y + stackView.frame.origin.y + 12,
+    ivArrowDown.frame = CGRectMake(textField.frame.origin.x
+                                   + stackView.frame.origin.x
+                                   + textField.frame.size.width - 30,
+                                   // y
+                                   textField.frame.origin.y
+                                   + stackView.frame.origin.y
+                                   + 12 + 47,
+                                   // width
                                    15,
+                                   // height
                                    8);
     ivArrowDown.tintColor = [UIColor colorWithRed:20/255.0 green:110/255.0 blue:190/255.0 alpha:1];
     
@@ -179,7 +203,7 @@
     }
 }
 
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+-(void)imagePickerController: (UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.avatarImageView.image = img;
@@ -195,7 +219,7 @@
     return destImage;
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -226,64 +250,102 @@
     } else if (![self validateEmailWithString:self.emailTextField.text]) {
         [self showAlertWithTitle:@"" message:@"Email is invalid."];
         return false;
-    } else if (![self validateDateOfBirthWithString:self.dateOfBirthTextField.text]) {
-        [self showAlertWithTitle:@"" message:@"Date of birth is invalid."];
+    } else if (!isFillDate) {
+        [self showAlertWithTitle:@"" message:@"Please choose date of birth's student."];
         return false;
     } else if (_maleButtonOutlet.selected == false && _femaleButtonOutlet.selected == false) {
         [self showAlertWithTitle:@"" message:@"Please fill gender."];
         return false;
-    } else if ([[self.classTextField.text stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]  isEqualToString:@""]) {
-        [self showAlertWithTitle:@"" message:@"Do not leave your class blank."];
+    } else if (!isFillClass) {
+        [self showAlertWithTitle:@"" message:@"Please choose class of student."];
         return false;
     }
     return true;
 }
 
 // MARK: - Text field delegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.dateOfBirthTextField) {
+        isFillDate = true;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"dd-MM-yyyy";
+        self.dateOfBirthTextField.text = [dateFormatter stringFromDate:[datePicker date]];
+    }
+    
+    return YES;
+}
+
+
 // MARK: - Picker delegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return _listClass.count;
+    return _listClassName.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return _listClass[row].name;
+    return _listClassName[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     //Did end scroll will select
-//    selectedPrefectureIndex = (int)row;
-    _classTextField.text = _listClass[row].name;
+    //    selectedPrefectureIndex = (int)row;
+    isFillClass = true;
+    _classTextField.text = _listClassName[row];
 }
 
 - (void)setUpPickerFor: (UITextField *)textField {
+    // Toolbar
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    toolbar.items = @[
+        [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil],
+        [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(tapDoneClassPicker)]
+    ];
     if (textField == _classTextField) {
-        //Add ToolBar on Picker
-        UIToolbar *toolbar = [[UIToolbar alloc] init];
-        toolbar.barStyle = UIBarStyleDefault;
-        NSString *done = @"Done";
-//        NSString *btnCancelDate = @"Cancel";
-        [toolbar sizeToFit];
         textField.inputAccessoryView = toolbar;
-        
         [pickerClass selectRow:0 inComponent:0 animated:YES];
         textField.inputView = pickerClass;
-        toolbar.items = @[
-//                            [[UIBarButtonItem alloc]initWithTitle:btnCancelDate style:UIBarButtonItemStyleDone target:self action:@selector(cancelPicker)],
-                          [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil],
-                          [[UIBarButtonItem alloc]initWithTitle:done style:UIBarButtonItemStyleDone target:self action:@selector(tapDonePicker)]
-        ];
+        [pickerClass selectRow:0 inComponent:0 animated:NO];
+        self.classTextField.text = _listClassName[0];
     }
 }
 
--(void)tapDonePicker {
-    NSInteger row = [pickerClass selectedRowInComponent:0];
-    _classTextField.text = _listClass[row].name;
+-(void)tapDoneClassPicker {
+//    NSInteger row = [pickerClass selectedRowInComponent:0];
+//    _classTextField.text = _listClass[row].name;
     
     [self.view endEditing:YES];
+}
+
+- (void)setUpDateTimePickerFor: (UITextField *)textField {
+    // Toolbar
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.barStyle = UIBarStyleDefault;
+    [toolbar sizeToFit];
+    toolbar.items = @[
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil],
+        [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(tapDoneDatePicker)]
+    ];
+    
+    textField.inputAccessoryView = toolbar;
+    textField.inputView = datePicker;
+}
+
+- (void)tapDoneDatePicker {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd-MM-yyyy";
+    self.dateOfBirthTextField.text = [dateFormatter stringFromDate:[datePicker date]];
+    [self.view endEditing:YES];
+}
+
+- (void)datePickerDidChange {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd-MM-yyyy";
+    self.dateOfBirthTextField.text = [dateFormatter stringFromDate:[datePicker date]];
 }
 
 @end

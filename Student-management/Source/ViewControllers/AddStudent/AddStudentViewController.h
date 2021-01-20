@@ -18,23 +18,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AddStudentViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UITableView *tableViewClass;
     UIPickerView *pickerClass;
+    UIDatePicker *datePicker;
     __weak IBOutlet UIStackView *stackView;
+    
     FIRDatabaseReference *ref;
+    BOOL isFillDate;
+    BOOL isFillClass;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
-@property (weak, nonatomic) IBOutlet UIButton *maleButtonOutlet;
-@property (weak, nonatomic) IBOutlet UIButton *femaleButtonOutlet;
-@property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *classTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
+@property (weak, nonatomic) IBOutlet UITextField *numberPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UIButton *femaleButtonOutlet;
+@property (weak, nonatomic) IBOutlet UIButton *maleButtonOutlet;
 
 @property FIRStorageReference *storageRef;
 @property NSURL* avatarURL;
-@property NSMutableArray<Classs*> *listClass;
+@property NSMutableArray<NSString*> *listClassName;
 
 @end
 

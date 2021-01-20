@@ -14,6 +14,7 @@
 
 @implementation DisplayTranscriptViewController
 @synthesize listTranscript;
+@synthesize listStatistical;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -31,8 +32,8 @@
     tableViewTranscript.delegate = self;
     tableViewTranscript.dataSource = self;
     
-//    let nibMovieCell = UINib(nibName: MovieCell.identifier, bundle: nil)
-//    movieCollectionView.register(nibMovieCell, forCellWithReuseIdentifier: MovieCell.identifier)
+    //    let nibMovieCell = UINib(nibName: MovieCell.identifier, bundle: nil)
+    //    movieCollectionView.register(nibMovieCell, forCellWithReuseIdentifier: MovieCell.identifier)
     UINib *nib = [UINib nibWithNibName:@"TranscriptTableViewCell" bundle:nil];
     [tableViewTranscript registerNib:nib forCellReuseIdentifier:@"TranscriptTableViewCell"];
 }
@@ -51,15 +52,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return listTranscript.count;
+    if (listTranscript) {
+        return listTranscript.count;
+    } else {
+        return listStatistical.count;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
     TranscriptTableViewCell *transcriptTableViewCell = [tableViewTranscript dequeueReusableCellWithIdentifier:@"TranscriptTableViewCell" forIndexPath:indexPath];
     
-    [transcriptTableViewCell configureCellWith:listTranscript[indexPath.row] numericalOrder:(int)indexPath.row+1];
+    if (listTranscript) {
+        [transcriptTableViewCell configureCellWithTranscriptModel:listTranscript[indexPath.row] numericalOrder:(int)indexPath.row+1];
+    } else {
+        [transcriptTableViewCell configureCellWithStatisticalModel:listStatistical[indexPath.row] numericalOrder:(int)indexPath.row+1];
+    }
+    
     
     return transcriptTableViewCell;
+    
 }
 
 @end

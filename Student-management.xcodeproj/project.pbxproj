@@ -5,7 +5,6 @@
 	};
 	objectVersion = 51;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		11449E91253FD88800A4D9F2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 11449E90253FD88800A4D9F2 /* Student.m */; };
 		116DCC9925B871A30020DB93 /* StatisticalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116DCC9825B871A30020DB93 /* StatisticalModel.m */; };

@@ -6,5 +6,5 @@
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
+   </FileRef> 
 </Workspace>
